@@ -9,23 +9,45 @@
 /* Begin PBXBuildFile section */
 		8332364C29C078A300A78C64 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8332364B29C078A300A78C64 /* AppDelegate.swift */; };
 		8332364E29C078A300A78C64 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8332364D29C078A300A78C64 /* SceneDelegate.swift */; };
-		8332365029C078A300A78C64 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8332364F29C078A300A78C64 /* ViewController.swift */; };
-		8332365529C078A700A78C64 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8332365429C078A700A78C64 /* Assets.xcassets */; };
 		8332365829C078A700A78C64 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8332365629C078A700A78C64 /* LaunchScreen.storyboard */; };
 		8332366229C079B100A78C64 /* ApplicationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8332366129C079B100A78C64 /* ApplicationCoordinator.swift */; };
 		8332366629C07B1600A78C64 /* SignInCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8332366529C07B1500A78C64 /* SignInCoordinator.swift */; };
+		8332366829C07F9500A78C64 /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8332366729C07F9500A78C64 /* SignInView.swift */; };
+		8332366A29C07FB500A78C64 /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8332366929C07FB500A78C64 /* SignInViewModel.swift */; };
+		8332366B29C08A7F00A78C64 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8332365429C078A700A78C64 /* Assets.xcassets */; };
+		8332367929C09FFF00A78C64 /* Montserrat-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8332367729C09FFF00A78C64 /* Montserrat-Regular.ttf */; };
+		8332367A29C09FFF00A78C64 /* Montserrat-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8332367829C09FFF00A78C64 /* Montserrat-Thin.ttf */; };
+		8332367D29C0A49600A78C64 /* SwiftUIExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8332367C29C0A49600A78C64 /* SwiftUIExtension.swift */; };
+		8332367F29C0B1DB00A78C64 /* Montserrat-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8332367E29C0B1DB00A78C64 /* Montserrat-Bold.ttf */; };
+		8332368129C0DCD100A78C64 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8332368029C0DCD100A78C64 /* LoginView.swift */; };
+		8332368729C1EE2A00A78C64 /* MainTabBarCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8332368629C1EE2A00A78C64 /* MainTabBarCoordinator.swift */; };
+		8332368A29C1EEAF00A78C64 /* Page1Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8332368929C1EEAF00A78C64 /* Page1Coordinator.swift */; };
+		8332368F29C1EF6000A78C64 /* ProfileCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8332368E29C1EF6000A78C64 /* ProfileCoordinator.swift */; };
+		8332369229C1F79400A78C64 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8332369129C1F79400A78C64 /* CoreDataManager.swift */; };
+		8332369529C1F7C600A78C64 /* Person.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8332369329C1F7C600A78C64 /* Person.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		8332364829C078A300A78C64 /* TestTaskForEM.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestTaskForEM.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8332364B29C078A300A78C64 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8332364D29C078A300A78C64 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		8332364F29C078A300A78C64 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		8332365429C078A700A78C64 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8332365729C078A700A78C64 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8332365929C078A700A78C64 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8332366129C079B100A78C64 /* ApplicationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationCoordinator.swift; sourceTree = "<group>"; };
 		8332366529C07B1500A78C64 /* SignInCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInCoordinator.swift; sourceTree = "<group>"; };
+		8332366729C07F9500A78C64 /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
+		8332366929C07FB500A78C64 /* SignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
+		8332367729C09FFF00A78C64 /* Montserrat-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Montserrat-Regular.ttf"; path = "../../../../../../Downloads/Montserrat (1)/static/Montserrat-Regular.ttf"; sourceTree = "<group>"; };
+		8332367829C09FFF00A78C64 /* Montserrat-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Montserrat-Thin.ttf"; path = "../../../../../../Downloads/Montserrat (1)/static/Montserrat-Thin.ttf"; sourceTree = "<group>"; };
+		8332367C29C0A49600A78C64 /* SwiftUIExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIExtension.swift; sourceTree = "<group>"; };
+		8332367E29C0B1DB00A78C64 /* Montserrat-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Montserrat-Bold.ttf"; path = "../../../../../../Downloads/Montserrat (1)/static/Montserrat-Bold.ttf"; sourceTree = "<group>"; };
+		8332368029C0DCD100A78C64 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		8332368629C1EE2A00A78C64 /* MainTabBarCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarCoordinator.swift; sourceTree = "<group>"; };
+		8332368929C1EEAF00A78C64 /* Page1Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Page1Coordinator.swift; sourceTree = "<group>"; };
+		8332368E29C1EF6000A78C64 /* ProfileCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCoordinator.swift; sourceTree = "<group>"; };
+		8332369129C1F79400A78C64 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		8332369429C1F7C600A78C64 /* Person.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Person.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +82,8 @@
 			children = (
 				8332365F29C078E000A78C64 /* Application */,
 				8332366329C07AC600A78C64 /* CoreModules */,
+				8332369029C1F77900A78C64 /* Managers */,
+				8332367B29C0A47600A78C64 /* Extension */,
 				8332366029C0790A00A78C64 /* Resources */,
 			);
 			path = TestTaskForEM;
@@ -78,8 +102,10 @@
 		8332366029C0790A00A78C64 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				8332369329C1F7C600A78C64 /* Person.xcdatamodeld */,
 				8332365929C078A700A78C64 /* Info.plist */,
 				8332365429C078A700A78C64 /* Assets.xcassets */,
+				8332366C29C09CA100A78C64 /* Fonts */,
 				8332365629C078A700A78C64 /* LaunchScreen.storyboard */,
 			);
 			path = Resources;
@@ -88,8 +114,10 @@
 		8332366329C07AC600A78C64 /* CoreModules */ = {
 			isa = PBXGroup;
 			children = (
+				8332368629C1EE2A00A78C64 /* MainTabBarCoordinator.swift */,
 				8332366429C07AE900A78C64 /* SignInModul */,
-				8332364F29C078A300A78C64 /* ViewController.swift */,
+				8332368829C1EE9700A78C64 /* Page1Modul */,
+				8332368D29C1EF1F00A78C64 /* ProfileModul */,
 			);
 			path = CoreModules;
 			sourceTree = "<group>";
@@ -98,8 +126,53 @@
 			isa = PBXGroup;
 			children = (
 				8332366529C07B1500A78C64 /* SignInCoordinator.swift */,
+				8332366729C07F9500A78C64 /* SignInView.swift */,
+				8332368029C0DCD100A78C64 /* LoginView.swift */,
+				8332366929C07FB500A78C64 /* SignInViewModel.swift */,
 			);
 			path = SignInModul;
+			sourceTree = "<group>";
+		};
+		8332366C29C09CA100A78C64 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				8332367E29C0B1DB00A78C64 /* Montserrat-Bold.ttf */,
+				8332367729C09FFF00A78C64 /* Montserrat-Regular.ttf */,
+				8332367829C09FFF00A78C64 /* Montserrat-Thin.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		8332367B29C0A47600A78C64 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				8332367C29C0A49600A78C64 /* SwiftUIExtension.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		8332368829C1EE9700A78C64 /* Page1Modul */ = {
+			isa = PBXGroup;
+			children = (
+				8332368929C1EEAF00A78C64 /* Page1Coordinator.swift */,
+			);
+			path = Page1Modul;
+			sourceTree = "<group>";
+		};
+		8332368D29C1EF1F00A78C64 /* ProfileModul */ = {
+			isa = PBXGroup;
+			children = (
+				8332368E29C1EF6000A78C64 /* ProfileCoordinator.swift */,
+			);
+			path = ProfileModul;
+			sourceTree = "<group>";
+		};
+		8332369029C1F77900A78C64 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				8332369129C1F79400A78C64 /* CoreDataManager.swift */,
+			);
+			path = Managers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -160,8 +233,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8332367F29C0B1DB00A78C64 /* Montserrat-Bold.ttf in Resources */,
+				8332367929C09FFF00A78C64 /* Montserrat-Regular.ttf in Resources */,
+				8332366B29C08A7F00A78C64 /* Assets.xcassets in Resources */,
+				8332367A29C09FFF00A78C64 /* Montserrat-Thin.ttf in Resources */,
 				8332365829C078A700A78C64 /* LaunchScreen.storyboard in Resources */,
-				8332365529C078A700A78C64 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -172,11 +248,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8332365029C078A300A78C64 /* ViewController.swift in Sources */,
+				8332368F29C1EF6000A78C64 /* ProfileCoordinator.swift in Sources */,
+				8332366829C07F9500A78C64 /* SignInView.swift in Sources */,
+				8332368A29C1EEAF00A78C64 /* Page1Coordinator.swift in Sources */,
+				8332366A29C07FB500A78C64 /* SignInViewModel.swift in Sources */,
 				8332364C29C078A300A78C64 /* AppDelegate.swift in Sources */,
+				8332368729C1EE2A00A78C64 /* MainTabBarCoordinator.swift in Sources */,
+				8332369229C1F79400A78C64 /* CoreDataManager.swift in Sources */,
 				8332364E29C078A300A78C64 /* SceneDelegate.swift in Sources */,
+				8332367D29C0A49600A78C64 /* SwiftUIExtension.swift in Sources */,
 				8332366229C079B100A78C64 /* ApplicationCoordinator.swift in Sources */,
 				8332366629C07B1600A78C64 /* SignInCoordinator.swift in Sources */,
+				8332368129C0DCD100A78C64 /* LoginView.swift in Sources */,
+				8332369529C1F7C600A78C64 /* Person.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -390,6 +474,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		8332369329C1F7C600A78C64 /* Person.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				8332369429C1F7C600A78C64 /* Person.xcdatamodel */,
+			);
+			currentVersion = 8332369429C1F7C600A78C64 /* Person.xcdatamodel */;
+			path = Person.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 8332364029C078A300A78C64 /* Project object */;
 }

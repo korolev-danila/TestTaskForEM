@@ -19,13 +19,24 @@ final class ApplicationCoordinator {
     init(window: UIWindow) {
         self.window = window
     }
+    
+    private func showMain() {
+        let mainCoordinator = MainCoordinator()
+        mainCoordinator.start()
+        childCoordinator = [mainCoordinator]
+        window.rootViewController = mainCoordinator.rootViewController
+    }
 }
 
 extension ApplicationCoordinator: CoordinatorProtocol {
     func start() {
-        let signInCoordinator = SignInCoordinator()
+        var signInCoordinator = SignInCoordinator()
         signInCoordinator.start()
+        signInCoordinator.showMain = { [weak self] in
+            self?.showMain()
+        }
         childCoordinator = [signInCoordinator]
+        
         window.rootViewController = signInCoordinator.rootViewController
     }
 }
