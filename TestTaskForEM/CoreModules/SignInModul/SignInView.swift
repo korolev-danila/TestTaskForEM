@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct SignInView: View {
-    @ObservedObject var viewModel = SignInViewModel()
+    @ObservedObject private var viewModel: SignInViewModel
     
     var showMain: () -> () = { }
     var showLogin: () -> () = { }
@@ -16,6 +16,10 @@ struct SignInView: View {
     @State private var firstName: String = ""
     @State private var lastName: String = ""
     @State private var email: String = ""
+    
+    init(_ viewModel: SignInViewModel) {
+        self.viewModel = viewModel
+    }
     
     var body: some View {
         VStack {
@@ -128,12 +132,20 @@ struct SignInView: View {
             Spacer()
         }
         .padding(.top)
-        .onAppear(perform: UIApplication.shared.addTapGestureRecognizer)
+        .gesture(DragGesture(minimumDistance: 8, coordinateSpace: .local)
+                            .onEnded({ value in
+                                if value.translation.height > 0 &&
+                                    value.translation.width < 100 &&
+                                    value.translation.width > -100 {
+                                    print("8888")
+                                    hideKeyboard()
+                                    }
+                            }))
     }
 }
 
-struct SignInView_Previews: PreviewProvider {
-    static var previews: some View {
-        SignInView()
-    }
-}
+//struct SignInView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        SignInView()
+//    }
+//}

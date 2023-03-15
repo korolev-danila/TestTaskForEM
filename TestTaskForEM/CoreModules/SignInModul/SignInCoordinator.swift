@@ -12,12 +12,15 @@ final class SignInCoordinator {
     var rootViewController: UINavigationController
     var showMain: () -> () = { }
     
-    init() {
+    private var viewModel: SignInViewModel
+    
+    init(_ coreData: CoreDataProtocol) {
         self.rootViewController = UINavigationController()
+        viewModel = SignInViewModel(coreData)
     }
     
     private func showLoginView() {
-        var view = LoginView()
+        var view = LoginView(viewModel)
         view.showMain = { [weak self] in
             self?.showMain()
         }
@@ -27,7 +30,7 @@ final class SignInCoordinator {
 
 extension SignInCoordinator: CoordinatorProtocol {
     func start() {
-        var view = SignInView()
+        var view = SignInView(viewModel)
         view.showMain = { [weak self] in
             self?.showMain()
         }

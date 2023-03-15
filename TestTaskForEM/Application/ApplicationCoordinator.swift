@@ -13,11 +13,14 @@ protocol CoordinatorProtocol {
 
 final class ApplicationCoordinator {
     
-    let window: UIWindow
+    private let window: UIWindow
+    private let coreData: CoreDataProtocol
     private var childCoordinator = [CoordinatorProtocol]()
     
     init(window: UIWindow) {
         self.window = window
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        coreData = CoreDataManager(context: appDelegate.persistentContainer.viewContext)
     }
     
     private func showMain() {
@@ -30,7 +33,7 @@ final class ApplicationCoordinator {
 
 extension ApplicationCoordinator: CoordinatorProtocol {
     func start() {
-        var signInCoordinator = SignInCoordinator()
+        let signInCoordinator = SignInCoordinator(coreData)
         signInCoordinator.start()
         signInCoordinator.showMain = { [weak self] in
             self?.showMain()

@@ -8,12 +8,17 @@
 import SwiftUI
 
 struct LoginView: View {
-    @ObservedObject var viewModel = SignInViewModel()
+    @ObservedObject private var viewModel: SignInViewModel
+    
     var showMain: () -> () = { }
     
     @State private var username: String = ""
     @State private var password: String = ""
     @State private var isSecure: Bool = true
+    
+    init(_ viewModel: SignInViewModel) {
+        self.viewModel = viewModel
+    }
     
     var body: some View {
         VStack() {
@@ -50,6 +55,7 @@ struct LoginView: View {
                                                                green: 123/255,
                                                                blue: 123/255))
                         .font(Font.custom("Montserrat-Regular", size: 11))
+                        .padding(EdgeInsets(top: 0, leading: 22, bottom: 0, trailing: 0))
                     }
                     .frame(width: 261, height: 29)
                     .padding(EdgeInsets(top: 0, leading: 8, bottom: 0, trailing: 36))
@@ -59,7 +65,7 @@ struct LoginView: View {
                     Button(action: {
                         isSecure.toggle()
                     }, label: {
-                        Image(systemName: !isSecure ? "eye.slash" : "eye" )
+                        Image(systemName: isSecure ? "eye.slash" : "eye" )
                             .foregroundColor(Color(red: 123/255, green: 123/255,
                                                    blue: 123/255))
                     })
@@ -82,12 +88,20 @@ struct LoginView: View {
             Spacer()
         }
         .padding(.top, 66)
-        .onAppear(perform: UIApplication.shared.addTapGestureRecognizer)
+        .gesture(DragGesture(minimumDistance: 8, coordinateSpace: .local)
+                            .onEnded({ value in
+                                if value.translation.height > 0 &&
+                                    value.translation.width < 100 &&
+                                    value.translation.width > -100 {
+                                    print("8888")
+                                    hideKeyboard()
+                                    }
+                            }))
     }
 }
 
-struct LoginView_Previews: PreviewProvider {
-    static var previews: some View {
-        LoginView()
-    }
-}
+//struct LoginView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        LoginView()
+//    }
+//}
