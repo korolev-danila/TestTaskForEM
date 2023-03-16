@@ -12,12 +12,21 @@ struct LoginView: View {
     
     var showMain: () -> () = { }
     
-    @State private var username: String = ""
-    @State private var password: String = ""
     @State private var isSecure: Bool = true
+    @State private var showingAlert = false
     
     init(_ viewModel: SignInViewModel) {
         self.viewModel = viewModel
+    }
+    
+    func tapLoginButton() {
+        if viewModel.loginIsValid {
+            if viewModel.findPersonInArray() {
+                showMain()
+            } else {
+                showingAlert = true
+            }
+        }
     }
     
     var body: some View {
@@ -29,8 +38,8 @@ struct LoginView: View {
                 .padding(77.77)
             
             VStack(alignment: .center, spacing: 35) {
-                TextField("", text: $username)
-                    .placeholder(when: username.isEmpty) {
+                TextField("", text: $viewModel.userFirstLogin)
+                    .placeholder(when: viewModel.userFirstLogin.isEmpty) {
                         Text("First name").foregroundColor(Color(red: 123/255,
                                                                  green: 123/255,
                                                                  blue: 123/255))
@@ -44,13 +53,13 @@ struct LoginView: View {
                 HStack {
                     Group {
                         if isSecure {
-                            SecureField("", text: $password)
+                            SecureField("", text: $viewModel.userPassword)
                         } else {
-                            TextField("", text: $password)
+                            TextField("", text: $viewModel.userPassword)
                         }
                     }
                     .animation(.easeInOut(duration: 0.2), value: isSecure)
-                    .placeholder(when: password.isEmpty) {
+                    .placeholder(when: viewModel.userPassword.isEmpty) {
                         Text("Password").foregroundColor(Color(red: 123/255,
                                                                green: 123/255,
                                                                blue: 123/255))
@@ -74,7 +83,7 @@ struct LoginView: View {
                 .padding(.leading, 8)
             }
             
-            Button(action: showMain) {
+            Button(action: tapLoginButton) {
                 Label(title: {
                     Text("Login")
                         .foregroundColor(.white)
@@ -85,9 +94,13 @@ struct LoginView: View {
             .background(Color(red: 78/255, green: 85/255, blue: 215/255))
             .cornerRadius(15)
             .padding(.top, 66)
+            
             Spacer()
         }
         .padding(.top, 66)
+        .alert(isPresented:$showingAlert) {
+            Alert(title: Text("Not found"), message: Text("Email or password is not correct."), dismissButton: .cancel())
+        }
         .gesture(DragGesture(minimumDistance: 8, coordinateSpace: .local)
                             .onEnded({ value in
                                 if value.translation.height > 0 &&
