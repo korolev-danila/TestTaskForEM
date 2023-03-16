@@ -19,5 +19,6 @@ final class Page1Coordinator {
 extension Page1Coordinator: CoordinatorProtocol {
     func start() {
         print("Page1Coordinator start")
+        rootViewController.view.backgroundColor = .gray
     }
 }

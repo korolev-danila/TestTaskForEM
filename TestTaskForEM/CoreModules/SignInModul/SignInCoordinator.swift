@@ -10,7 +10,9 @@ import SwiftUI
 
 final class SignInCoordinator {
     var rootViewController: UINavigationController
+    
     var showMain: () -> () = { }
+    var showSignIn: () -> () = { }
     
     private var viewModel: SignInViewModel
     

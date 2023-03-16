@@ -11,13 +11,22 @@ import SwiftUI
 final class ProfileCoordinator {
     var rootViewController: UINavigationController
     
+    var showSignIn: () -> () = { }
+    
     init() {
         rootViewController = UINavigationController()
+        rootViewController.navigationBar.isHidden = true
     }
 }
 
 extension ProfileCoordinator: CoordinatorProtocol {
     func start() {
-        print("ProfileCoordinator start")
+        
+        var view = ProfileView()
+        
+        view.showSignIn = { [weak self] in
+            self?.showSignIn()
+        }
+        rootViewController.setViewControllers([UIHostingController(rootView: view)], animated: false)
     }
 }

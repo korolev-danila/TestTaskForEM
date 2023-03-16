@@ -28,6 +28,13 @@
 		8332369829C1F98000A78C64 /* Person+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8332369629C1F98000A78C64 /* Person+CoreDataClass.swift */; };
 		8332369929C1F98000A78C64 /* Person+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8332369729C1F98000A78C64 /* Person+CoreDataProperties.swift */; };
 		8332369B29C2187A00A78C64 /* MockCoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8332369A29C2187A00A78C64 /* MockCoreDataManager.swift */; };
+		83DC9ACE29C3349E0019F913 /* MockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DC9ACD29C3349E0019F913 /* MockView.swift */; };
+		83DC9AD029C338E90019F913 /* MockCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DC9ACF29C338E90019F913 /* MockCoordinator.swift */; };
+		83DC9AD229C33C880019F913 /* UIKitExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DC9AD129C33C880019F913 /* UIKitExtension.swift */; };
+		83DC9AD429C36E6C0019F913 /* TabBarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DC9AD329C36E6C0019F913 /* TabBarVC.swift */; };
+		83DC9AD829C380490019F913 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DC9AD729C380490019F913 /* ProfileView.swift */; };
+		83DC9ADA29C380550019F913 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DC9AD929C380550019F913 /* ProfileViewModel.swift */; };
+		83DC9ADC29C39A080019F913 /* Montserrat-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 83DC9ADB29C39A080019F913 /* Montserrat-Light.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +61,13 @@
 		8332369629C1F98000A78C64 /* Person+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Person+CoreDataClass.swift"; path = "Entity/Person+CoreDataClass.swift"; sourceTree = "<group>"; };
 		8332369729C1F98000A78C64 /* Person+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Person+CoreDataProperties.swift"; path = "Entity/Person+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		8332369A29C2187A00A78C64 /* MockCoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockCoreDataManager.swift; sourceTree = "<group>"; };
+		83DC9ACD29C3349E0019F913 /* MockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockView.swift; sourceTree = "<group>"; };
+		83DC9ACF29C338E90019F913 /* MockCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockCoordinator.swift; sourceTree = "<group>"; };
+		83DC9AD129C33C880019F913 /* UIKitExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIKitExtension.swift; sourceTree = "<group>"; };
+		83DC9AD329C36E6C0019F913 /* TabBarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarVC.swift; sourceTree = "<group>"; };
+		83DC9AD729C380490019F913 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		83DC9AD929C380550019F913 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
+		83DC9ADB29C39A080019F913 /* Montserrat-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Montserrat-Light.ttf"; path = "../../../../../../Downloads/Montserrat (1)/static/Montserrat-Light.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,8 +134,8 @@
 		8332366329C07AC600A78C64 /* CoreModules */ = {
 			isa = PBXGroup;
 			children = (
-				8332368629C1EE2A00A78C64 /* MainTabBarCoordinator.swift */,
 				8332366429C07AE900A78C64 /* SignInModul */,
+				83DC9AD629C36EFC0019F913 /* TabBarModul */,
 				8332368829C1EE9700A78C64 /* Page1Modul */,
 				8332368D29C1EF1F00A78C64 /* ProfileModul */,
 			);
@@ -142,6 +156,7 @@
 		8332366C29C09CA100A78C64 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				83DC9ADB29C39A080019F913 /* Montserrat-Light.ttf */,
 				8332367E29C0B1DB00A78C64 /* Montserrat-Bold.ttf */,
 				8332367729C09FFF00A78C64 /* Montserrat-Regular.ttf */,
 				8332367829C09FFF00A78C64 /* Montserrat-Thin.ttf */,
@@ -153,6 +168,7 @@
 			isa = PBXGroup;
 			children = (
 				8332367C29C0A49600A78C64 /* SwiftUIExtension.swift */,
+				83DC9AD129C33C880019F913 /* UIKitExtension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -169,6 +185,8 @@
 			isa = PBXGroup;
 			children = (
 				8332368E29C1EF6000A78C64 /* ProfileCoordinator.swift */,
+				83DC9AD729C380490019F913 /* ProfileView.swift */,
+				83DC9AD929C380550019F913 /* ProfileViewModel.swift */,
 			);
 			path = ProfileModul;
 			sourceTree = "<group>";
@@ -182,6 +200,17 @@
 				8332369A29C2187A00A78C64 /* MockCoreDataManager.swift */,
 			);
 			path = Managers;
+			sourceTree = "<group>";
+		};
+		83DC9AD629C36EFC0019F913 /* TabBarModul */ = {
+			isa = PBXGroup;
+			children = (
+				8332368629C1EE2A00A78C64 /* MainTabBarCoordinator.swift */,
+				83DC9AD329C36E6C0019F913 /* TabBarVC.swift */,
+				83DC9ACD29C3349E0019F913 /* MockView.swift */,
+				83DC9ACF29C338E90019F913 /* MockCoordinator.swift */,
+			);
+			path = TabBarModul;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -242,6 +271,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				83DC9ADC29C39A080019F913 /* Montserrat-Light.ttf in Resources */,
 				8332367F29C0B1DB00A78C64 /* Montserrat-Bold.ttf in Resources */,
 				8332367929C09FFF00A78C64 /* Montserrat-Regular.ttf in Resources */,
 				8332366B29C08A7F00A78C64 /* Assets.xcassets in Resources */,
@@ -259,11 +289,15 @@
 			files = (
 				8332368F29C1EF6000A78C64 /* ProfileCoordinator.swift in Sources */,
 				8332366829C07F9500A78C64 /* SignInView.swift in Sources */,
+				83DC9AD229C33C880019F913 /* UIKitExtension.swift in Sources */,
+				83DC9AD029C338E90019F913 /* MockCoordinator.swift in Sources */,
 				8332368A29C1EEAF00A78C64 /* Page1Coordinator.swift in Sources */,
+				83DC9ACE29C3349E0019F913 /* MockView.swift in Sources */,
 				8332366A29C07FB500A78C64 /* SignInViewModel.swift in Sources */,
 				8332364C29C078A300A78C64 /* AppDelegate.swift in Sources */,
 				8332368729C1EE2A00A78C64 /* MainTabBarCoordinator.swift in Sources */,
 				8332369229C1F79400A78C64 /* CoreDataManager.swift in Sources */,
+				83DC9AD429C36E6C0019F913 /* TabBarVC.swift in Sources */,
 				8332364E29C078A300A78C64 /* SceneDelegate.swift in Sources */,
 				8332369829C1F98000A78C64 /* Person+CoreDataClass.swift in Sources */,
 				8332367D29C0A49600A78C64 /* SwiftUIExtension.swift in Sources */,
@@ -271,7 +305,9 @@
 				8332369929C1F98000A78C64 /* Person+CoreDataProperties.swift in Sources */,
 				8332369B29C2187A00A78C64 /* MockCoreDataManager.swift in Sources */,
 				8332366629C07B1600A78C64 /* SignInCoordinator.swift in Sources */,
+				83DC9ADA29C380550019F913 /* ProfileViewModel.swift in Sources */,
 				8332368129C0DCD100A78C64 /* LoginView.swift in Sources */,
+				83DC9AD829C380490019F913 /* ProfileView.swift in Sources */,
 				8332369529C1F7C600A78C64 /* Persons.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

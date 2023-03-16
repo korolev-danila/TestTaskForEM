@@ -126,7 +126,8 @@ struct SignInView: View {
                             Image("Google")
                                 .resizable()
                                 .scaledToFit()
-                            .frame(width: 24, height: 24)})
+                            .frame(width: 24, height: 24)
+                        })
                     }
                     
                     Button(action: tapSignInButton) {
@@ -138,7 +139,8 @@ struct SignInView: View {
                             Image("Apple")
                                 .resizable()
                                 .scaledToFit()
-                            .frame(width: 24, height: 24)})
+                            .frame(width: 24, height: 24)
+                        })
                     }
                     .padding(.leading, -12)
                 }

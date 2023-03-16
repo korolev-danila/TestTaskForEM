@@ -20,8 +20,11 @@ struct LoginView: View {
     }
     
     func tapLoginButton() {
+        print("1")
         if viewModel.loginIsValid {
+            print("2")
             if viewModel.findPersonInArray() {
+                print("3")
                 showMain()
             } else {
                 showingAlert = true

@@ -28,6 +28,9 @@ final class ApplicationCoordinator {
         mainCoordinator.start()
         childCoordinator = [mainCoordinator]
         window.rootViewController = mainCoordinator.rootViewController
+        mainCoordinator.showSignIn = { [weak self] in
+            self?.start()
+        }
     }
 }
 
@@ -39,7 +42,7 @@ extension ApplicationCoordinator: CoordinatorProtocol {
             self?.showMain()
         }
         childCoordinator = [signInCoordinator]
-        
+
         window.rootViewController = signInCoordinator.rootViewController
     }
 }
