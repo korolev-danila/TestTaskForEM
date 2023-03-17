@@ -56,7 +56,7 @@ struct ProfileView: View {
                     Button(action: mock) {
                         Label(title: {
                             Text("Change photo")
-                                .foregroundColor(.gray)
+                                .foregroundColor(Color(red: 128/255, green: 128/255, blue: 128/255))
                                 .font(Font.custom("Montserrat-Regular", size: 9))
                         }, icon: {})
                     }
@@ -69,7 +69,7 @@ struct ProfileView: View {
                     Button(action: mock) {
                         Label(title: {
                             Text("Upload item")
-                                .foregroundColor(.white)
+                                .foregroundColor(Color(red: 234/255, green: 234/255, blue: 234/255))
                                 .font(Font.custom("Montserrat-Bold", size: 15))
                                 .padding(.trailing, 80)
                         }, icon: {
@@ -80,13 +80,15 @@ struct ProfileView: View {
                             
                         })
                     }
-                    .frame(width: 305, height: 46)
+                    .frame(width: 305, height: 42)
                     .background(Color(red: 78/255, green: 85/255, blue: 215/255))
                     .cornerRadius(15)
-                    .padding(.top, 20)
+                    .padding(.top, 24)
                 }
                 .padding(.top, 14)
-                VStack(spacing: 25) {
+                
+                // MARK: -
+                VStack(spacing: 23) {
                     HStack {
                         ZStack {
                             Circle()
@@ -95,7 +97,7 @@ struct ProfileView: View {
                             Image("trade")
                         }
                         Text("Trade store")
-                            .foregroundColor(.black)
+                            .foregroundColor(Color(red: 4/255, green: 4/255, blue: 2/255))
                             .font(Font.custom("Montserrat-Light", size: 15))
                         Spacer()
                         Image("backRight")
@@ -108,7 +110,7 @@ struct ProfileView: View {
                             Image("trade")
                         }
                         Text("Payment method")
-                            .foregroundColor(.black)
+                            .foregroundColor(Color(red: 4/255, green: 4/255, blue: 2/255))
                             .font(Font.custom("Montserrat-Light", size: 15))
                         Spacer()
                         Image("backRight")
@@ -121,7 +123,7 @@ struct ProfileView: View {
                             Image("trade")
                         }
                         Text("Balance")
-                            .foregroundColor(.black)
+                            .foregroundColor(Color(red: 4/255, green: 4/255, blue: 2/255))
                             .font(Font.custom("Montserrat-Light", size: 15))
                         Spacer()
                         Image("1530")
@@ -134,7 +136,7 @@ struct ProfileView: View {
                             Image("trade")
                         }
                         Text("Trade history")
-                            .foregroundColor(.black)
+                            .foregroundColor(Color(red: 4/255, green: 4/255, blue: 2/255))
                             .font(Font.custom("Montserrat-Light", size: 15))
                         Spacer()
                         Image("backRight")
@@ -147,7 +149,7 @@ struct ProfileView: View {
                             Image("restore")
                         }
                         Text("Restore Purchase")
-                            .foregroundColor(.black)
+                            .foregroundColor(Color(red: 4/255, green: 4/255, blue: 2/255))
                             .font(Font.custom("Montserrat-Light", size: 15))
                         Spacer()
                         Image("backRight")
@@ -160,7 +162,7 @@ struct ProfileView: View {
                             Image("ask")
                         }
                         Text("Help")
-                            .foregroundColor(.black)
+                            .foregroundColor(Color(red: 4/255, green: 4/255, blue: 2/255))
                             .font(Font.custom("Montserrat-Light", size: 15))
                         Spacer()
                     }
@@ -170,11 +172,9 @@ struct ProfileView: View {
                                 .fill(Color(red: 238/255, green: 239/255, blue: 244/255))
                                 .frame(width: 40, height: 40)
                             Image("logOut")
-                                .resizable()
-                                .frame(width: 22, height: 16)
                         }
                         Text("Log out")
-                            .foregroundColor(.black)
+                            .foregroundColor(Color(red: 4/255, green: 4/255, blue: 2/255))
                             .font(Font.custom("Montserrat-Light", size: 15))
                         Spacer()
                     }
@@ -183,9 +183,9 @@ struct ProfileView: View {
                         showSignIn()
                     }
                 }
-                .padding(.top, 14)
+                .padding(.top, 11)
                 .padding(.leading, 32)
-                .padding(.trailing, 32)
+                .padding(.trailing, 45)
                 Spacer()
             }
         }

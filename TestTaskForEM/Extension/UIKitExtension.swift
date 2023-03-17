@@ -25,15 +25,6 @@ extension UIImage {
         return img
     }
     
-    /// need to tabbar selected image change alpha
-    func image(alpha: CGFloat) -> UIImage? {
-        UIGraphicsBeginImageContextWithOptions(size, false, scale)
-        draw(at: .zero, blendMode: .normal, alpha: alpha)
-        let newImage = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        return newImage
-    }
-    
     /// need to tabbar selected merged image
     func overlayWith(image: UIImage, posX: CGFloat, posY: CGFloat) -> UIImage {
         let newWidth = size.width < posX + image.size.width ? posX + image.size.width : size.width

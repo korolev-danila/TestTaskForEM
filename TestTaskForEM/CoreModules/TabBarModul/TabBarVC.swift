@@ -16,10 +16,17 @@ final class TabBarVC: UITabBarController {
     }
     
     private func settingTabBar() {
+        let fillerView = UIView()
+        fillerView.frame = tabBar.frame
+        fillerView.frame.size.height = tabBar.frame.height + 45
+        fillerView.frame.origin.y -= 45
+        fillerView.layer.cornerRadius = 25
+        fillerView.backgroundColor = .white
+        view.addSubview(fillerView)
+        
         tabBar.tintColor = .gray
-        tabBar.backgroundColor = .white
-        tabBar.layer.cornerRadius = 30
-        tabBar.layer.masksToBounds = true
-        tabBar.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
+        tabBar.backgroundColor = .clear
+        
+        view.bringSubviewToFront(tabBar)
     }
 }

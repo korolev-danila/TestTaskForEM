@@ -12,8 +12,8 @@ import SwiftUI
 final class MainCoordinator {
     var rootViewController: UITabBarController
     private var childCoordinator = [CoordinatorProtocol]()
-//    private let coreDataManager = CoreDataManager()
-//    private let networkManager = NetworkManager()
+    //    private let coreDataManager = CoreDataManager()
+    //    private let networkManager = NetworkManager()
     
     var showSignIn: () -> () = { }
     
@@ -22,10 +22,10 @@ final class MainCoordinator {
     }
     
     private func setupTabBarItem(vc: UIViewController, imageName: String) {
-        guard let defaultImage = UIImage(named: imageName),
-            let circle = UIImage.circle(diameter: 34, color: .lightGray).image(alpha: 0.2) else { return }
+        guard let defaultImage = UIImage(named: imageName) else { return }
         
-        let selectedImage = circle.overlayWith(image: defaultImage, posX: 8, posY: 8)
+        let circle = UIImage.circle(diameter: 40, color: UIColor(red: 238/255, green: 239/255, blue: 244/255, alpha: 0.1))
+        let selectedImage = circle.overlayWith(image: defaultImage, posX: 11, posY: 11)
         vc.tabBarItem = UITabBarItem(title: nil, image: defaultImage, selectedImage: selectedImage)
     }
 }
@@ -43,7 +43,12 @@ extension MainCoordinator: CoordinatorProtocol {
         mock1Coordinator.start()
         childCoordinator.append(mock1Coordinator)
         let mock1View = mock1Coordinator.rootViewController
-        setupTabBarItem(vc: mock1View, imageName: "like")
+        if let defaultImage = UIImage(named: "like") {
+            let circle = UIImage.circle(diameter: 40,
+                                        color: UIColor(red: 238/255, green: 239/255, blue: 244/255, alpha: 0.1))
+            let selectedImage = circle.overlayWith(image: defaultImage, posX: 10, posY: 12)
+            mock1View.tabBarItem = UITabBarItem(title: nil, image: defaultImage, selectedImage: selectedImage)
+        }
         
         let mock2Coordinator = MockCoordinator()
         mock2Coordinator.start()

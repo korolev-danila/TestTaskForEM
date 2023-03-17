@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+/// like a UIKit isHidden method
 struct Show: ViewModifier {
     let isVisible: Bool
 
@@ -21,7 +22,7 @@ struct Show: ViewModifier {
 }
 
 extension View {
-    
+    /// like a UIKit isHidden method
     func show(isVisible: Bool) -> some View {
         ModifiedContent(content: self, modifier: Show(isVisible: isVisible))
     }
