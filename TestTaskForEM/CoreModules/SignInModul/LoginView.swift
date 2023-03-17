@@ -12,7 +12,7 @@ struct LoginView: View {
     
     var showMain: () -> () = { }
     
-    @State private var isSecure: Bool = true
+    @State private var isSecure = true
     @State private var showingAlert = false
     
     init(_ viewModel: SignInViewModel) {
@@ -20,11 +20,8 @@ struct LoginView: View {
     }
     
     func tapLoginButton() {
-        print("1")
-        if viewModel.loginIsValid {
-            print("2")
-            if viewModel.findPersonInArray() {
-                print("3")
+        if viewModel.passwordIsValid {
+            if viewModel.findPersonInArrayAndCheck() {
                 showMain()
             } else {
                 showingAlert = true
@@ -91,11 +88,12 @@ struct LoginView: View {
                     Text("Login")
                         .foregroundColor(.white)
                         .font(Font.custom("Montserrat-Bold", size: 15))
+                        .frame(width: 305, height: 46)
+                        .background(Color(red: 78/255, green: 85/255, blue: 215/255))
+                        .cornerRadius(15)
+                        .contentShape(Rectangle())
                 }, icon: {})
             }
-            .frame(width: 305, height: 46)
-            .background(Color(red: 78/255, green: 85/255, blue: 215/255))
-            .cornerRadius(15)
             .padding(.top, 66)
             
             Spacer()

@@ -10,26 +10,30 @@ import Foundation
 
 final class SignInViewModel: ObservableObject {
     private let coreData: CoreDataProtocol
-    @Published private var persons: [Person]
+    private var persons: [Person] = []
     
+    /// for SignInView
     @Published var userFirstName = ""
     @Published var userLastName = ""
     @Published var userEmail = ""
-    
-    @Published var userFirstLogin = ""
-    @Published var userPassword = ""
-    
     @Published var formIsValid = false
     @Published var emailIsValid = true
-    @Published var loginIsValid = false
+    
+    /// for LoginView
+    @Published var userFirstLogin = ""
+    @Published var userPassword = ""
+    @Published var passwordIsValid = false
       
     private var publishers = Set<AnyCancellable>()
 
     init(_ coreData: CoreDataProtocol) {
         self.coreData = coreData
-        persons = self.coreData.fetchMyPersons()
-        
-        setupBindings()
+        self.fetchPersons()
+        self.setupBindings()
+    }
+    
+    deinit {
+        print("deinit SignInViewModel")
     }
     
     private func setupBindings() {
@@ -43,14 +47,21 @@ final class SignInViewModel: ObservableObject {
             .assign(to: \.emailIsValid, on: self)
             .store(in: &publishers)
         
-        isLoginFormValidPublisher
+        isPasswordValidPublisher
               .receive(on: RunLoop.main)
-              .assign(to: \.loginIsValid, on: self)
+              .assign(to: \.passwordIsValid, on: self)
               .store(in: &publishers)
     }
     
     // MARK: -
-    func findPersonInArray() -> Bool {
+    func fetchPersons() {
+        persons = coreData.fetchMyPersons()
+//        for person in persons {
+//            print(person.firstName, person.email, person.password)
+//        }
+    }
+    
+    func findPersonInArrayAndCheck() -> Bool {
         for person in persons {
             if person.firstName == userFirstLogin {
                 guard let password = person.password else {
@@ -77,7 +88,6 @@ final class SignInViewModel: ObservableObject {
     }
     
     func saveNewPerson() -> Bool {
-        print("try to save")
         var person: Person?
         
         do {
@@ -105,16 +115,6 @@ private extension SignInViewModel {
             isUserEmailValidPublisher)
               .map { isFirstNameValid, isLastNameValid, isEmailValid in
                   return isFirstNameValid && isLastNameValid && isEmailValid
-              }
-              .eraseToAnyPublisher()
-      }
-    
-    var isLoginFormValidPublisher: AnyPublisher<Bool, Never> {
-          Publishers.CombineLatest(
-            isFirstUserNameValidPublisher,
-            isPasswordValidPublisher)
-              .map { isFirstNameValid, isPasswordValid in
-                  return isFirstNameValid && isPasswordValid
               }
               .eraseToAnyPublisher()
       }

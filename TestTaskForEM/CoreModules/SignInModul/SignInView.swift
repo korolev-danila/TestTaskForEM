@@ -19,7 +19,7 @@ struct SignInView: View {
     init(_ viewModel: SignInViewModel) {
         self.viewModel = viewModel
     }
-        
+    
     private func tapSignInButton() {
         isEmailValid = viewModel.emailIsValid
         
@@ -79,7 +79,6 @@ struct SignInView: View {
                         .background(Color(red: 232/255, green: 232/255, blue: 232/255))
                         .clipShape(Capsule())
                     
-                    
                     Text("use the correct email")
                         .font(Font.custom("Montserrat-Regular", size: 9))
                         .foregroundColor(.red)
@@ -91,11 +90,12 @@ struct SignInView: View {
                         Text("Sign in")
                             .foregroundColor(.white)
                             .font(Font.custom("Montserrat-Bold", size: 15))
+                            .frame(width: 305, height: 46)
+                            .background(Color(red: 78/255, green: 85/255, blue: 215/255))
+                            .cornerRadius(15)
+                            .contentShape(Rectangle())
                     }, icon: {})
                 }
-                .frame(width: 305, height: 46)
-                .background(Color(red: 78/255, green: 85/255, blue: 215/255))
-                .cornerRadius(15)
                 .padding(.top, -16)
                 
                 HStack {
@@ -115,7 +115,6 @@ struct SignInView: View {
                 .frame(width: 305, height: 14)
                 .padding(.top, -17.5)
                 
-                
                 VStack(spacing: 38) {
                     Button(action: tapSignInButton) {
                         Label(title: {
@@ -126,7 +125,7 @@ struct SignInView: View {
                             Image("Google")
                                 .resizable()
                                 .scaledToFit()
-                            .frame(width: 24, height: 24)
+                                .frame(width: 24, height: 24)
                         })
                     }
                     
@@ -139,7 +138,7 @@ struct SignInView: View {
                             Image("Apple")
                                 .resizable()
                                 .scaledToFit()
-                            .frame(width: 24, height: 24)
+                                .frame(width: 24, height: 24)
                         })
                     }
                     .padding(.leading, -12)
@@ -151,21 +150,20 @@ struct SignInView: View {
         }
         .padding(.top)
         .alert(isPresented:$showingAlert) {
-                    Alert(
-                        title: Text("This email is already in use"),
-                        message: Text("Do you want to switch to login?"),
-                        primaryButton: .destructive(Text("Go")) {
-                            showLogin()
-                        },
-                        secondaryButton: .cancel()
-                    )
-                }
+            Alert(
+                title: Text("This email is already in use"),
+                message: Text("Do you want to switch to login?"),
+                primaryButton: .destructive(Text("Go")) {
+                    showLogin()
+                },
+                secondaryButton: .cancel()
+            )
+        }
         .gesture(DragGesture(minimumDistance: 8, coordinateSpace: .local)
             .onEnded({ value in
                 if value.translation.height > 0 &&
                     value.translation.width < 100 &&
                     value.translation.width > -100 {
-                    print("8888")
                     hideKeyboard()
                 }
             }))
