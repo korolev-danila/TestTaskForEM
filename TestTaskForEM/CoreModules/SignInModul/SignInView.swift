@@ -22,15 +22,14 @@ struct SignInView: View {
     
     private func tapSignInButton() {
         isEmailValid = viewModel.emailIsValid
+        if !viewModel.formIsValid { return }
         
-        if viewModel.formIsValid {
-            if viewModel.findOldPersonForEmail() {
-                showingAlert = true
-            } else if viewModel.saveNewPerson() {
-                showMain()
-            }
-            hideKeyboard()
+        if viewModel.findOldPersonForEmail() {
+            showingAlert = true
+        } else if viewModel.saveNewPerson() {
+            showMain()
         }
+        hideKeyboard()
     }
     
     var body: some View {

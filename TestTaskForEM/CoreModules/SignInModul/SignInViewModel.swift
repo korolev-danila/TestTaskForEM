@@ -65,6 +65,7 @@ final class SignInViewModel: ObservableObject {
         for person in persons {
             if person.firstName == userFirstLogin {
                 guard let password = person.password else {
+                    /// need for first login
                     person.password = userPassword
                     coreData.saveContext()
                     return true

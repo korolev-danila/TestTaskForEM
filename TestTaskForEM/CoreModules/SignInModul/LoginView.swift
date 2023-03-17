@@ -20,13 +20,13 @@ struct LoginView: View {
     }
     
     func tapLoginButton() {
-        if viewModel.passwordIsValid {
-            if viewModel.findPersonInArrayAndCheck() {
-                showMain()
-            } else {
-                showingAlert = true
-            }
-        }
+        if !viewModel.passwordIsValid { return }
+        
+        if viewModel.findPersonInArrayAndCheck() {
+            showMain()
+        } else {
+            showingAlert = true
+        }        
     }
     
     var body: some View {
