@@ -6,59 +6,62 @@
 //
 
 import Foundation
+import Combine
 
 final class Page1ViewModel: ObservableObject {
-   
-}
-
-/*
-{
-  "latest": [
-    {
-      "category": "Phones",
-      "name": "Samsung S10",
-      "price": 1000,
-      "image_url": "https://www.dhresource.com/0x0/f2/albu/g8/M01/9D/19/rBVaV1079WeAEW-AAARn9m_Dmh0487.jpg"
-    },
-    {
-      "category": "Games",
-      "name": "Sony Playstation 5",
-      "price": 700,
-      "image_url": "https://avatars.mds.yandex.net/get-mpic/6251774/img_id4273297770790914968.jpeg/orig"
-    },
-    {
-      "category": "Games",
-      "name": "Xbox ONE",
-      "price": 500,
-      "image_url": "https://www.tradeinn.com/f/13754/137546834/microsoft-xbox-xbox-one-s-1tb-console-additional-controller.jpg"
-    },
-    {
-      "category": "Cars",
-      "name": "BMW X6M",
-      "price": 35000,
-      "image_url": "https://mirbmw.ru/wp-content/uploads/2022/01/manhart-mhx6-700-01.jpg"
+    private let network: NetworkManagerProtocol
+    
+    private var cancellable: AnyCancellable?
+    
+    @Published private var localLatestArr: [Model] = []
+    @Published private var localFlashsArr: [Model] = []
+    
+    private let latestSubj = PassthroughSubject<[Model], Error>()
+    private let flashSubj = PassthroughSubject<[Model], Error>()
+    
+    private var isFetch = false
+    
+    @Published var latestArr: [Model] = []
+    @Published var flashsArr: [Model] = []
+    
+    init(network: NetworkManagerProtocol) {
+        self.network = network
+        
+        bindingPublishers()
     }
-  ]
+    
+    private func bindingPublishers() {
+        cancellable = Publishers.Zip(latestSubj, flashSubj)
+            .receive(on: DispatchQueue.main)
+            .sink(receiveCompletion: { completion in
+                switch completion {
+                case .finished:
+                    print("Finished")
+                case .failure:
+                    print("Failure")
+                }
+            }, receiveValue: { value in
+                if value.0.count > 0 && value.1.count > 0 {
+                    self.latestArr = value.0
+                    self.flashsArr = value.1
+                } else if value.0.count == 0 && value.1.count == 0 {
+                    self.isFetch = false
+                    self.fetchData()
+                }
+            })
+    }
+    
+    func fetchData() {
+        if isFetch { return }
+        isFetch = true
+            
+        Task {
+            do {
+                latestSubj.send(try await network.getData(request: Request.latest))
+                flashSubj.send(try await network.getData(request: Request.flash))
+            } catch {
+                print("failur fetchData()")
+            }
+        }
+    }
 }
- 
- /////
- 
- {
-   "flash_sale": [
-     {
-       "category": "Kids",
-       "name": "New Balance Sneakers",
-       "price": 22.5,
-       "discount": 30,
-       "image_url": "https://newbalance.ru/upload/iblock/697/iz997hht_nb_02_i.jpg"
-     },
-     {
-       "category": "Kids",
-       "name": "Reebok Classic",
-       "price": 24,
-       "discount": 30,
-       "image_url": "https://assets.reebok.com/images/h_2000,f_auto,q_auto,fl_lossy,c_fill,g_auto/3613ebaf6ed24a609818ac63000250a3_9366/Classic_Leather_Shoes_-_Toddler_White_FZ2093_01_standard.jpg"
-     }
-   ]
- }
-*/

@@ -13,21 +13,6 @@ struct Page1View: View {
     
     @State var mockStr = ""
     
-    let models = [Model( category: "Kids", name: "Sony Playstation 5", price: 180000),
-                  Model( category: "Kids1", name: "Sony ", price: 180000),
-                  Model( category: "Kids2", name: "Sony Playstation 5", price: 180000),
-                  Model( category: "Kids9", name: "Sony Playstation 5", price: 180000),
-                  Model( category: "Kids1", name: "Sony Playstation 5", price: 180000),
-                  Model( category: "Kids2", name: "Sony Playstation 5", price: 180000)]
-    
-    let models2 = [Model( category: "Kids", name: "Sony ", price: 30, discount: 30),
-                   Model( category: "Kids1", name: "Sony Playstation 5",  price: 30, discount: 30),
-                   Model( category: "Kids", name: "Sony ", price: 30, discount: 30),
-                   Model( category: "Kids1", name: "Sony Playstation 5",  price: 30, discount: 30),
-                   Model( category: "Kids1", name: "Sony Playstation 5",  price: 30, discount: 30),
-                   Model( category: "Kids", name: "Sony ", price: 30, discount: 30),]
-    
-    
     var body: some View {
         ZStack {
             Color(red: 250/255, green: 249/255, blue: 255/255)
@@ -113,7 +98,7 @@ struct Page1View: View {
                         
                         ScrollView(.horizontal, showsIndicators: false) {
                             LazyHGrid(rows: [GridItem(.fixed(150))], alignment: .center, spacing: 0) {
-                                ForEach(models, id: \.self) { item in
+                                ForEach($viewModel.latestArr, id: \.self) { $item in
                                     RegularCell(model: item)
                                 }
                             }
@@ -138,7 +123,7 @@ struct Page1View: View {
                         
                         ScrollView(.horizontal, showsIndicators: false) {
                             LazyHGrid(rows: [GridItem(.fixed(222))], alignment: .center, spacing: 0) {
-                                ForEach(models2, id: \.self) { item in
+                                ForEach($viewModel.flashsArr, id: \.self) { $item in
                                     SaleCell(model: item)
                                 }
                             }
@@ -163,7 +148,7 @@ struct Page1View: View {
                         
                         ScrollView(.horizontal, showsIndicators: false) {
                             LazyHGrid(rows: [GridItem(.fixed(150))], alignment: .center, spacing: 0) {
-                                ForEach(models, id: \.self) { item in
+                                ForEach($viewModel.latestArr, id: \.self) { $item in
                                     RegularCell(model: item)
                                 }
                             }
@@ -179,6 +164,9 @@ struct Page1View: View {
                 }
             }
                 .padding(.top, -38)
+        }
+        .onAppear() {
+            viewModel.fetchData()
         }
     }
 }

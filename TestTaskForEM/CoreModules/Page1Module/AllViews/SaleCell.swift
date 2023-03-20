@@ -20,10 +20,11 @@ struct SaleCell: View {
             ZStack {
                 Color(red: 0.9, green: 0.9, blue: 0.9)
                     .ignoresSafeArea()
-                if let data = model.image {
+                if let data = model.imageData {
                     Image(data: data)?
                         .resizable()
-                        .scaledToFill()
+                        .aspectRatio(contentMode: .fill)
+                        .frame(width: 174, height: 221)
                 }
                 Text(model.category)
                     .font(Font.custom("Montserrat-Bold", size: 10))
