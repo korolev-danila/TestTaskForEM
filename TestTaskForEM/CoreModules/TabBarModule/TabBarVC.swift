@@ -24,6 +24,8 @@ final class TabBarVC: UITabBarController {
         fillerView.backgroundColor = .white
         view.addSubview(fillerView)
         
+        tabBar.clipsToBounds = true
+        tabBar.isTranslucent = false
         tabBar.tintColor = .gray
         tabBar.backgroundColor = .clear
         

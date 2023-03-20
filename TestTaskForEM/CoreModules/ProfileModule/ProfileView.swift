@@ -23,9 +23,7 @@ struct ProfileView: View {
             VStack {
                 VStack {
                     HStack {
-                        Button(action: {
-                            print("button pressed")
-                        }) {
+                        Button(action: mock) {
                             Image("back")
                                 .renderingMode(Image.TemplateRenderingMode?
                                     .init(Image.TemplateRenderingMode.original))

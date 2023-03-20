@@ -13,6 +13,8 @@ final class MockCoordinator {
     
     init() {
         rootViewController = UIHostingController(rootView: MockView())
+        rootViewController.view.backgroundColor = UIColor(cgColor: CGColor(red: 250/255, green: 249/255,
+                                                                           blue: 255/255, alpha: 1))
     }
 }
 

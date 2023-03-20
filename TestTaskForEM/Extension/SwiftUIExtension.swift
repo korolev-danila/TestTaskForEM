@@ -43,3 +43,31 @@ extension View {
         UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
     }
 }
+
+extension View {
+    func priceFormater(_ value: Double) -> String {
+        let formatter = NumberFormatter()
+        let number = NSNumber(value: value)
+        
+        if value < 1000 {
+            formatter.minimumFractionDigits = 2
+            formatter.maximumFractionDigits = 2
+            return String(formatter.string(from: number) ?? "")
+        } else {
+            formatter.groupingSeparator = ","
+            formatter.numberStyle = .decimal
+            return String(formatter.string(from: number) ?? "")
+        }
+    }
+}
+
+extension Image {
+    /// Initializes a SwiftUI `Image` from data.
+    init?(data: Data) {
+        if let uiImage = UIImage(data: data) {
+            self.init(uiImage: uiImage)
+        } else {
+            return nil
+        }
+    }
+}

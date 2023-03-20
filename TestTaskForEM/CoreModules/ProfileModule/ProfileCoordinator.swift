@@ -15,6 +15,8 @@ final class ProfileCoordinator {
     
     init() {
         rootViewController = UINavigationController()
+        rootViewController.view.backgroundColor = UIColor(cgColor: CGColor(red: 250/255, green: 249/255,
+                                                                           blue: 255/255, alpha: 1))
         rootViewController.navigationBar.isHidden = true
     }
 }

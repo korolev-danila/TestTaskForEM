@@ -36,13 +36,14 @@ final class ApplicationCoordinator {
 
 extension ApplicationCoordinator: CoordinatorProtocol {
     func start() {
-        let signInCoordinator = SignInCoordinator(coreData)
-        signInCoordinator.start()
-        signInCoordinator.showMain = { [weak self] in
-            self?.showMain()
-        }
-        childCoordinator = [signInCoordinator]
-
-        window.rootViewController = signInCoordinator.rootViewController
+        showMain()
+//        let signInCoordinator = SignInCoordinator(coreData)
+//        signInCoordinator.start()
+//        signInCoordinator.showMain = { [weak self] in
+//            self?.showMain()
+//        }
+//        childCoordinator = [signInCoordinator]
+//
+//        window.rootViewController = signInCoordinator.rootViewController
     }
 }
