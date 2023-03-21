@@ -7,26 +7,24 @@
 
 import Foundation
 import Combine
+import SwiftUI
 
 final class Page1ViewModel: ObservableObject {
     private let network: NetworkManagerProtocol
+    private let coreData: CoreDataProtocol
     
     private var cancellable: AnyCancellable?
-    
-    @Published private var localLatestArr: [Model] = []
-    @Published private var localFlashsArr: [Model] = []
-    
+    private var isFetch = false
     private let latestSubj = PassthroughSubject<[Model], Error>()
     private let flashSubj = PassthroughSubject<[Model], Error>()
     
-    private var isFetch = false
-    
     @Published var latestArr: [Model] = []
     @Published var flashsArr: [Model] = []
+    @Published var image: UIImage?
     
-    init(network: NetworkManagerProtocol) {
+    init(network: NetworkManagerProtocol, coredata: CoreDataProtocol) {
         self.network = network
-        
+        self.coreData = coredata
         bindingPublishers()
     }
     
@@ -51,10 +49,23 @@ final class Page1ViewModel: ObservableObject {
             })
     }
     
+    // MARK: - methods
+    func fetchPerson() {
+        do {
+            let person = try coreData.getPerson()
+            
+            if let data = person.personImg {
+                image = UIImage(data: data)
+            }
+        } catch let error {
+            print(error.localizedDescription)
+        }
+    }
+    
     func fetchData() {
         if isFetch { return }
         isFetch = true
-            
+        
         Task {
             do {
                 latestSubj.send(try await network.getData(request: Request.latest))

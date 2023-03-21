@@ -30,6 +30,7 @@
 		8332369B29C2187A00A78C64 /* MockCoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8332369A29C2187A00A78C64 /* MockCoreDataManager.swift */; };
 		835D277929C889A000BA29B2 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 835D277829C889A000BA29B2 /* NetworkManager.swift */; };
 		83822E5129C85ED000BF568E /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83822E5029C85ED000BF568E /* Model.swift */; };
+		83AD282829C9B4EB0084B8D5 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83AD282729C9B4EB0084B8D5 /* ImagePicker.swift */; };
 		83DC9ACE29C3349E0019F913 /* MockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DC9ACD29C3349E0019F913 /* MockView.swift */; };
 		83DC9AD029C338E90019F913 /* MockCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DC9ACF29C338E90019F913 /* MockCoordinator.swift */; };
 		83DC9AD229C33C880019F913 /* UIKitExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DC9AD129C33C880019F913 /* UIKitExtension.swift */; };
@@ -70,6 +71,7 @@
 		8332369A29C2187A00A78C64 /* MockCoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockCoreDataManager.swift; sourceTree = "<group>"; };
 		835D277829C889A000BA29B2 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		83822E5029C85ED000BF568E /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		83AD282729C9B4EB0084B8D5 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		83DC9ACD29C3349E0019F913 /* MockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockView.swift; sourceTree = "<group>"; };
 		83DC9ACF29C338E90019F913 /* MockCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockCoordinator.swift; sourceTree = "<group>"; };
 		83DC9AD129C33C880019F913 /* UIKitExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIKitExtension.swift; sourceTree = "<group>"; };
@@ -178,7 +180,6 @@
 		8332369029C1F77900A78C64 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
-				83AD282229C9AE7B0084B8D5 /* CoreData */,
 				8332369129C1F79400A78C64 /* CoreDataManager.swift */,
 				835D277829C889A000BA29B2 /* NetworkManager.swift */,
 			);
@@ -192,6 +193,7 @@
 				83DC9ADF29C4F1D60019F913 /* SaleCell.swift */,
 				83DC9AE529C62FBC0019F913 /* ButtonBarView.swift */,
 				83DC9AE329C5F2320019F913 /* RegularCell.swift */,
+				83AD282729C9B4EB0084B8D5 /* ImagePicker.swift */,
 			);
 			path = AllViews;
 			sourceTree = "<group>";
@@ -210,6 +212,7 @@
 		83AD282329C9AE990084B8D5 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				83AD282229C9AE7B0084B8D5 /* CoreData */,
 				83822E5029C85ED000BF568E /* Model.swift */,
 			);
 			path = Models;
@@ -351,6 +354,7 @@
 				83DC9AE029C4F1D60019F913 /* SaleCell.swift in Sources */,
 				8332368129C0DCD100A78C64 /* LoginView.swift in Sources */,
 				83DC9AD829C380490019F913 /* ProfileView.swift in Sources */,
+				83AD282829C9B4EB0084B8D5 /* ImagePicker.swift in Sources */,
 				8332369529C1F7C600A78C64 /* Persons.xcdatamodeld in Sources */,
 				83DC9AE629C62FBC0019F913 /* ButtonBarView.swift in Sources */,
 			);

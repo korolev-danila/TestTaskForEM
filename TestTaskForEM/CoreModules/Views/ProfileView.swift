@@ -9,11 +9,17 @@ import SwiftUI
 
 struct ProfileView: View {
     
+    @ObservedObject private var viewModel: ProfileViewModel
+    
+    @State var shouldShowImagePicker = false
+        
     var showSignIn: () -> () = { }
     
-    private func mock() {
-        //print(2.0.squareRoot() * 35)
+    init(_ viewModel: ProfileViewModel) {
+        self.viewModel = viewModel
     }
+    
+    private func mock() { }
     
     var body: some View {
         ZStack {
@@ -45,13 +51,23 @@ struct ProfileView: View {
                             .fill(Color(red: 192/255, green: 192/255, blue: 192/255))
                             .frame(width: 70, height: 70)
                         
-                        Image("user")
-                            .resizable()
-                            .aspectRatio(1.0, contentMode: .fit)
-                            .frame(width: 49.495, height: 49.495)
+                        if let image = self.viewModel.image {
+                            Image(uiImage: image)
+                                .resizable()
+                                .aspectRatio(1.0, contentMode: .fill)
+                                .frame(width: 65, height: 65)
+                                .clipShape(Circle())
+                        } else {
+                            Image("user")
+                                .resizable()
+                                .aspectRatio(1.0, contentMode: .fit)
+                                .frame(width: 65, height: 65)
+                        }
                     }
                     
-                    Button(action: mock) {
+                    Button(action: {
+                        shouldShowImagePicker.toggle()
+                    }) {
                         Label(title: {
                             Text("Change photo")
                                 .foregroundColor(Color(red: 128/255, green: 128/255, blue: 128/255))
@@ -59,7 +75,7 @@ struct ProfileView: View {
                         }, icon: {})
                     }
                     
-                    Text("Name of user")
+                    Text(viewModel.namePerson)
                         .foregroundColor(Color(red: 63/255, green: 63/255, blue: 63/255))
                         .font(Font.custom("Montserrat-Bold", size: 17))
                         .padding(.top, 5)
@@ -187,11 +203,18 @@ struct ProfileView: View {
                 Spacer()
             }
         }
+        .sheet(isPresented: $shouldShowImagePicker, onDismiss: nil) {
+            ImagePicker(image: $viewModel.image)
+                .ignoresSafeArea()
+                .onDisappear() {
+                    viewModel.saveImage()
+                }
+        }
     }
 }
 
-struct ProfileView_Previews: PreviewProvider {
-    static var previews: some View {
-        ProfileView()
-    }
-}
+//struct ProfileView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ProfileView()
+//    }
+//}

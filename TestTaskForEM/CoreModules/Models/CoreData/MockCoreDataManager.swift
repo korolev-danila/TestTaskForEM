@@ -8,6 +8,14 @@
 import Foundation
 
 final class MockCoreData: CoreDataProtocol {
+    func setPerson(_ person: Person?) {
+        
+    }
+    
+    func getPerson() throws -> Person {
+        throw CoreDataError.missedPerson
+    }
+    
     func fetchMyPersons() -> [Person] {
         return []
     }

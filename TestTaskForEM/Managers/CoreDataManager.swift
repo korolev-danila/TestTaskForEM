@@ -9,6 +9,8 @@ import CoreData
 import UIKit
 
 protocol CoreDataProtocol {
+    func setPerson(_ person: Person?)
+    func getPerson() throws -> Person
     func fetchMyPersons() -> [Person]
     func resetAllRecords()
     func saveContext()
@@ -22,6 +24,7 @@ enum CoreDataError: Error {
 
 final class CoreDataManager {
     private let context: NSManagedObjectContext
+    private var person: Person?
 
     init(context: NSManagedObjectContext) {
         self.context = context
@@ -30,6 +33,19 @@ final class CoreDataManager {
 
 // MARK: - CoreDataProtocol
 extension CoreDataManager: CoreDataProtocol {
+    
+    func setPerson(_ person: Person?) {
+        self.person = person
+    }
+    
+    func getPerson() throws -> Person {
+        if let person = person {
+            return person
+        } else {
+            throw CoreDataError.missedPerson
+        }
+    }
+    
     func fetchMyPersons() -> [Person] {
         let fetchRequest: NSFetchRequest<Person> = Person.fetchRequest()
         

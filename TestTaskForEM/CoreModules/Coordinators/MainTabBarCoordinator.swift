@@ -12,12 +12,12 @@ import SwiftUI
 final class MainCoordinator {
     var rootViewController: UITabBarController
     private var childCoordinator = [CoordinatorProtocol]()
-    //    private let coreDataManager = CoreDataManager()
-    //    private let networkManager = NetworkManager()
+    private let coreDataManager: CoreDataProtocol
     
     var showSignIn: () -> () = { }
     
-    init() {
+    init(_ coreData: CoreDataProtocol) {
+        self.coreDataManager = coreData
         rootViewController = TabBarVC()
     }
     
@@ -33,7 +33,7 @@ final class MainCoordinator {
 extension MainCoordinator: CoordinatorProtocol {
     func start() {
         
-        let page1Coordinator = Page1Coordinator()
+        let page1Coordinator = Page1Coordinator(coredata: coreDataManager)
         page1Coordinator.start()
         childCoordinator.append(page1Coordinator)
         let page1View = page1Coordinator.rootViewController
@@ -62,7 +62,7 @@ extension MainCoordinator: CoordinatorProtocol {
         let mock3View = mock3Coordinator.rootViewController
         setupTabBarItem(vc: mock3View, imageName: "chat")
         
-        let profileCoordinator = ProfileCoordinator()
+        let profileCoordinator = ProfileCoordinator(coreDataManager)
         profileCoordinator.start()
         childCoordinator.append(profileCoordinator)
         let profileView = profileCoordinator.rootViewController

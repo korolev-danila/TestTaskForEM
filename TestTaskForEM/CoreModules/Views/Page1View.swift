@@ -36,10 +36,19 @@ struct Page1View: View {
                         Circle()
                             .fill(Color(red: 192/255, green: 192/255, blue: 192/255))
                             .frame(width: 30, height: 30)
-                        Image("user")
-                            .resizable()
-                            .aspectRatio(1.0, contentMode: .fit)
-                            .frame(width: 22, height: 22)
+                        
+                        if let image = self.viewModel.image {
+                            Image(uiImage: image)
+                                .resizable()
+                                .aspectRatio(1.0, contentMode: .fill)
+                                .frame(width: 27, height: 27)
+                                .clipShape(Circle())
+                        } else {
+                            Image("user")
+                                .resizable()
+                                .aspectRatio(1.0, contentMode: .fit)
+                                .frame(width: 25, height: 25)
+                        }
                     }
                     .padding(.trailing, 45)
                 }
@@ -166,6 +175,7 @@ struct Page1View: View {
                 .padding(.top, -38)
         }
         .onAppear() {
+            viewModel.fetchPerson()
             viewModel.fetchData()
         }
     }

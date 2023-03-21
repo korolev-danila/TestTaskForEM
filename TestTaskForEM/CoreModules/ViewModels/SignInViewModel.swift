@@ -64,14 +64,17 @@ final class SignInViewModel: ObservableObject {
     func findPersonInArrayAndCheck() -> Bool {
         for person in persons {
             if person.firstName == userFirstLogin {
+                
                 guard let password = person.password else {
                     /// need for first login
                     person.password = userPassword
                     coreData.saveContext()
+                    coreData.setPerson(person)
                     return true
                 }
                 
                 if password == userPassword {
+                    coreData.setPerson(person)
                     return true
                 }
             }
@@ -97,6 +100,7 @@ final class SignInViewModel: ObservableObject {
             person?.lastName = userLastName
             person?.email = userEmail
             coreData.saveContext()
+            coreData.setPerson(person)
             
             return true
         } catch {

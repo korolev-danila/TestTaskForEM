@@ -24,7 +24,7 @@ final class ApplicationCoordinator {
     }
     
     private func showMain() {
-        let mainCoordinator = MainCoordinator()
+        let mainCoordinator = MainCoordinator(coreData)
         mainCoordinator.start()
         childCoordinator = [mainCoordinator]
         window.rootViewController = mainCoordinator.rootViewController
@@ -36,7 +36,10 @@ final class ApplicationCoordinator {
 
 extension ApplicationCoordinator: CoordinatorProtocol {
     func start() {
+        let arr = coreData.fetchMyPersons()
+        coreData.setPerson(arr[0])
         showMain()
+        
 //        let signInCoordinator = SignInCoordinator(coreData)
 //        signInCoordinator.start()
 //        signInCoordinator.showMain = { [weak self] in
