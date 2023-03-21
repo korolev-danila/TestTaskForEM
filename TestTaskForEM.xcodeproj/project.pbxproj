@@ -65,8 +65,8 @@
 		8332368E29C1EF6000A78C64 /* ProfileCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCoordinator.swift; sourceTree = "<group>"; };
 		8332369129C1F79400A78C64 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		8332369429C1F7C600A78C64 /* Person.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Person.xcdatamodel; sourceTree = "<group>"; };
-		8332369629C1F98000A78C64 /* Person+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Person+CoreDataClass.swift"; path = "Entity/Person+CoreDataClass.swift"; sourceTree = "<group>"; };
-		8332369729C1F98000A78C64 /* Person+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Person+CoreDataProperties.swift"; path = "Entity/Person+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		8332369629C1F98000A78C64 /* Person+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Person+CoreDataClass.swift"; sourceTree = "<group>"; };
+		8332369729C1F98000A78C64 /* Person+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Person+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		8332369A29C2187A00A78C64 /* MockCoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockCoreDataManager.swift; sourceTree = "<group>"; };
 		835D277829C889A000BA29B2 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		83822E5029C85ED000BF568E /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
@@ -126,6 +126,7 @@
 		8332365F29C078E000A78C64 /* Application */ = {
 			isa = PBXGroup;
 			children = (
+				8332365929C078A700A78C64 /* Info.plist */,
 				8332364B29C078A300A78C64 /* AppDelegate.swift */,
 				8332364D29C078A300A78C64 /* SceneDelegate.swift */,
 				8332366129C079B100A78C64 /* ApplicationCoordinator.swift */,
@@ -136,8 +137,6 @@
 		8332366029C0790A00A78C64 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				8332369329C1F7C600A78C64 /* Persons.xcdatamodeld */,
-				8332365929C078A700A78C64 /* Info.plist */,
 				8332365429C078A700A78C64 /* Assets.xcassets */,
 				8332366C29C09CA100A78C64 /* Fonts */,
 				8332365629C078A700A78C64 /* LaunchScreen.storyboard */,
@@ -148,24 +147,12 @@
 		8332366329C07AC600A78C64 /* CoreModules */ = {
 			isa = PBXGroup;
 			children = (
-				83822E5029C85ED000BF568E /* Model.swift */,
-				8332366429C07AE900A78C64 /* SignInModule */,
-				83DC9AD629C36EFC0019F913 /* TabBarModule */,
-				8332368829C1EE9700A78C64 /* Page1Module */,
-				8332368D29C1EF1F00A78C64 /* ProfileModule */,
+				83AD282629C9AEC10084B8D5 /* Coordinators */,
+				83AD282529C9AEB90084B8D5 /* Views */,
+				83AD282429C9AEA50084B8D5 /* ViewModels */,
+				83AD282329C9AE990084B8D5 /* Models */,
 			);
 			path = CoreModules;
-			sourceTree = "<group>";
-		};
-		8332366429C07AE900A78C64 /* SignInModule */ = {
-			isa = PBXGroup;
-			children = (
-				8332366529C07B1500A78C64 /* SignInCoordinator.swift */,
-				8332366729C07F9500A78C64 /* SignInView.swift */,
-				8332368029C0DCD100A78C64 /* LoginView.swift */,
-				8332366929C07FB500A78C64 /* SignInViewModel.swift */,
-			);
-			path = SignInModule;
 			sourceTree = "<group>";
 		};
 		8332366C29C09CA100A78C64 /* Fonts */ = {
@@ -188,34 +175,11 @@
 			path = Extension;
 			sourceTree = "<group>";
 		};
-		8332368829C1EE9700A78C64 /* Page1Module */ = {
-			isa = PBXGroup;
-			children = (
-				83822E5229C85ED900BF568E /* AllViews */,
-				8332368929C1EEAF00A78C64 /* Page1Coordinator.swift */,
-				83DC9ADD29C4D2360019F913 /* Page1View.swift */,
-				83DC9AE129C4F4CB0019F913 /* Page1ViewModel.swift */,
-			);
-			path = Page1Module;
-			sourceTree = "<group>";
-		};
-		8332368D29C1EF1F00A78C64 /* ProfileModule */ = {
-			isa = PBXGroup;
-			children = (
-				8332368E29C1EF6000A78C64 /* ProfileCoordinator.swift */,
-				83DC9AD729C380490019F913 /* ProfileView.swift */,
-				83DC9AD929C380550019F913 /* ProfileViewModel.swift */,
-			);
-			path = ProfileModule;
-			sourceTree = "<group>";
-		};
 		8332369029C1F77900A78C64 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
-				8332369629C1F98000A78C64 /* Person+CoreDataClass.swift */,
-				8332369729C1F98000A78C64 /* Person+CoreDataProperties.swift */,
+				83AD282229C9AE7B0084B8D5 /* CoreData */,
 				8332369129C1F79400A78C64 /* CoreDataManager.swift */,
-				8332369A29C2187A00A78C64 /* MockCoreDataManager.swift */,
 				835D277829C889A000BA29B2 /* NetworkManager.swift */,
 			);
 			path = Managers;
@@ -224,6 +188,7 @@
 		83822E5229C85ED900BF568E /* AllViews */ = {
 			isa = PBXGroup;
 			children = (
+				83DC9ACD29C3349E0019F913 /* MockView.swift */,
 				83DC9ADF29C4F1D60019F913 /* SaleCell.swift */,
 				83DC9AE529C62FBC0019F913 /* ButtonBarView.swift */,
 				83DC9AE329C5F2320019F913 /* RegularCell.swift */,
@@ -231,15 +196,58 @@
 			path = AllViews;
 			sourceTree = "<group>";
 		};
-		83DC9AD629C36EFC0019F913 /* TabBarModule */ = {
+		83AD282229C9AE7B0084B8D5 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
-				8332368629C1EE2A00A78C64 /* MainTabBarCoordinator.swift */,
+				8332369329C1F7C600A78C64 /* Persons.xcdatamodeld */,
+				8332369A29C2187A00A78C64 /* MockCoreDataManager.swift */,
+				8332369629C1F98000A78C64 /* Person+CoreDataClass.swift */,
+				8332369729C1F98000A78C64 /* Person+CoreDataProperties.swift */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
+		83AD282329C9AE990084B8D5 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				83822E5029C85ED000BF568E /* Model.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		83AD282429C9AEA50084B8D5 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				8332366929C07FB500A78C64 /* SignInViewModel.swift */,
+				83DC9AE129C4F4CB0019F913 /* Page1ViewModel.swift */,
+				83DC9AD929C380550019F913 /* ProfileViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		83AD282529C9AEB90084B8D5 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				83822E5229C85ED900BF568E /* AllViews */,
+				8332368029C0DCD100A78C64 /* LoginView.swift */,
+				8332366729C07F9500A78C64 /* SignInView.swift */,
+				83DC9ADD29C4D2360019F913 /* Page1View.swift */,
+				83DC9AD729C380490019F913 /* ProfileView.swift */,
 				83DC9AD329C36E6C0019F913 /* TabBarVC.swift */,
-				83DC9ACD29C3349E0019F913 /* MockView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		83AD282629C9AEC10084B8D5 /* Coordinators */ = {
+			isa = PBXGroup;
+			children = (
+				8332366529C07B1500A78C64 /* SignInCoordinator.swift */,
+				8332368929C1EEAF00A78C64 /* Page1Coordinator.swift */,
+				8332368E29C1EF6000A78C64 /* ProfileCoordinator.swift */,
+				8332368629C1EE2A00A78C64 /* MainTabBarCoordinator.swift */,
 				83DC9ACF29C338E90019F913 /* MockCoordinator.swift */,
 			);
-			path = TabBarModule;
+			path = Coordinators;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -485,7 +493,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = FT2T248KX2;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = TestTaskForEM/Resources/Info.plist;
+				INFOPLIST_FILE = TestTaskForEM/Application/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -515,7 +523,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = FT2T248KX2;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = TestTaskForEM/Resources/Info.plist;
+				INFOPLIST_FILE = TestTaskForEM/Application/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
