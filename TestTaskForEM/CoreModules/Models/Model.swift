@@ -17,17 +17,17 @@ struct Model: Identifiable, Hashable, Codable {
     var imageUrl: String
     
     init?(json: [String: Any]) {
-        let category = json["category"] as! String
-        let name = json["name"] as! String
-        let price = json["price"] as! Double
+        let category = json["category"] as? String
+        let name = json["name"] as? String
+        let price = json["price"] as? Double
         let discount = json["discount"] as? Double
-        let imageUrl = json["image_url"] as! String
+        let imageUrl = json["image_url"] as? String
 
-        self.category = category
-        self.name = name
-        self.price = price
+        self.category = category ?? ""
+        self.name = name ?? ""
+        self.price = price ?? 0.0
         self.discount = discount
-        self.imageUrl = imageUrl
+        self.imageUrl = imageUrl ?? ""
     }
 
     static func getArray(from jsonArray: Any) -> [Model]? {

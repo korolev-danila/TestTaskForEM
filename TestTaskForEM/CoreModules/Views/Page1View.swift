@@ -13,12 +13,18 @@ struct Page1View: View {
     
     @State var mockStr = ""
     
+    var showPage2: () -> () = { }
+    
     var body: some View {
         ZStack {
             Color(red: 250/255, green: 249/255, blue: 255/255)
                 .ignoresSafeArea()
             
             VStack {
+                Text("NavBar")
+                    .foregroundColor(.clear)
+                    .background(Color.clear)
+                    .frame(height: 30)
                 HStack {
                     Button(action: {
                         print("button pressed")
@@ -134,6 +140,9 @@ struct Page1View: View {
                             LazyHGrid(rows: [GridItem(.fixed(222))], alignment: .center, spacing: 0) {
                                 ForEach($viewModel.flashsArr, id: \.self) { $item in
                                     SaleCell(model: item)
+                                        .onTapGesture {
+                                            showPage2()
+                                        }
                                 }
                             }
                             .frame(height: 225)
@@ -169,10 +178,9 @@ struct Page1View: View {
                     Spacer()
                     Text("")
                         .frame(height: 20)
-                    
                 }
             }
-                .padding(.top, -38)
+            .padding(.top, -38)
         }
         .onAppear() {
             viewModel.fetchPerson()
@@ -180,9 +188,3 @@ struct Page1View: View {
         }
     }
 }
-
-//struct Page1View_Previews: PreviewProvider {
-//    static var previews: some View {
-//        Page1View()
-//    }
-//}

@@ -101,11 +101,3 @@ struct SaleCell: View {
     }
 }
 
-//struct SellCellView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        let model = Model(category: "Kids", name: "New Balance Sneakers", // Balance Sneakers
-//                          price: 22, discount: 30, image: Image("fon"))
-//        
-//        SaleCellView(model: model)
-//    }
-//}

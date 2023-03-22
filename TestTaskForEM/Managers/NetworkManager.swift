@@ -9,6 +9,7 @@ import Foundation
 
 protocol NetworkManagerProtocol {
     func getData(request: Request) async throws -> [Model]
+    func getDetails() async throws -> ModelDetails
     func getImage(url: String) async throws -> Data
 }
 
@@ -63,6 +64,22 @@ extension NetworkManager: NetworkManagerProtocol {
         try await updateImgOf(array: &models)
         
         return models
+    }
+    
+    func getDetails() async throws -> ModelDetails {
+        guard let url = URL(string: "https://run.mocky.io/v3/f7f99d04-4971-45d5-92e0-70333383c239") else {
+            throw NetworkFetcherError.invalidURL }
+        
+        let (data, _) = try await URLSession.shared.data(from: url)
+        let asJSON = try JSONSerialization.jsonObject(with: data)
+        guard let responts = asJSON as? [String : Any] else { throw NetworkFetcherError.missingData }
+        guard var model = ModelDetails(json: responts) else { throw NetworkFetcherError.missingData }
+        
+        for item in model.imageUrls {
+            model.imageData.append( try await getImage(url: item))
+        }
+        
+        return model
     }
     
     func getImage(url: String) async throws -> Data {
