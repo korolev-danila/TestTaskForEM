@@ -45,6 +45,6 @@ extension Page1Coordinator: CoordinatorProtocol {
         rootViewController.setViewControllers([UIHostingController(rootView: view)], animated: false)
         rootViewController.view.backgroundColor = UIColor(cgColor: CGColor(red: 250/255, green: 249/255,
                                                                            blue: 255/255, alpha: 1))
-        showPage2()
+     //   showPage2()
     }
 }

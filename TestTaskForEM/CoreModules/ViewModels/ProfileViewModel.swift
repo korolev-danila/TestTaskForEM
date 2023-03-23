@@ -20,6 +20,10 @@ final class ProfileViewModel: ObservableObject {
         updateProp()
     }
     
+    deinit {
+        print("deinit ProfileViewModel")
+    }
+    
     private func fetchPerson() {
         do {
             person = try coreData.getPerson()

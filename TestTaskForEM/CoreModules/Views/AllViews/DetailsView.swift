@@ -20,7 +20,7 @@ struct DetailsView: View {
                     HStack(alignment: .firstTextBaseline) {
                         Text(model.name)
                             .font(Font.custom("Montserrat-Bold", size: 17))
-                            .frame(width: 120, height: 40)
+                            .frame( height: 40)
                             .minimumScaleFactor(0.1)
                             .lineLimit(2)
                             .multilineTextAlignment(.leading)
@@ -37,8 +37,9 @@ struct DetailsView: View {
                             .font(Font.custom("Montserrat-Regulare", size: 17))
                         Spacer()
                     }
-                    .frame(width: 215)
                 }
+                .frame(width: 215)
+                
                 Spacer()
                 Text("$ \(priceFormater(model.price))")
                     .font(Font.custom("Montserrat-Bold", size: 15))
@@ -49,7 +50,7 @@ struct DetailsView: View {
             HStack(alignment: .center, spacing: 3.5) {
                 Image("star")
                     .offset(y: -1)
-                Text("\(model.rating)")
+                Text(String(format: "%.1f", model.rating))
                     .foregroundColor(Color(red: 22/255,
                                            green: 24/255,
                                            blue: 38/255))
@@ -75,7 +76,7 @@ struct DetailsView: View {
                         .cornerRadius(6)
                         .overlay(
                             RoundedRectangle(cornerRadius: 6)
-                                .stroke(index != self.indColor ? .clear :
+                                .strokeBorder(index != self.indColor ? .clear :
                                             Color(red: 173/255, green: 173/255, blue: 173/255), lineWidth: 1.5)
                         )
                         .onTapGesture {

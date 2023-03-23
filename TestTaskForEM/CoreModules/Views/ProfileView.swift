@@ -92,11 +92,14 @@ struct ProfileView: View {
                                 .scaledToFit()
                                 .frame(width: 80, height: 16)
                         })
+                        .frame(width: 305, height: 42)
+                        .background(Color(red: 78/255, green: 85/255, blue: 215/255))
+                        .cornerRadius(15)
+                        .padding(.top, 24)
+                        .contentShape(Rectangle())
+                        
                     }
-                    .frame(width: 305, height: 42)
-                    .background(Color(red: 78/255, green: 85/255, blue: 215/255))
-                    .cornerRadius(15)
-                    .padding(.top, 24)
+                    
                 }
                 .padding(.top, 14)
                 

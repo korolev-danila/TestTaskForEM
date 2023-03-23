@@ -17,8 +17,8 @@ struct CarouselView: View {
                 ForEach((0..<array.count), id: \.self) { index in
                     HStack {
                         
-                        if let image = Image(data: array[index])  { //  UIImage(data: array[index])
-                            image
+                        if let image = UIImage(data: array[index]) {
+                            Image(uiImage: image)
                                 .resizable()
                                 .aspectRatio(contentMode: .fill)
                                 .frame(width: 342, height: 294)
@@ -38,8 +38,8 @@ struct CarouselView: View {
             
             HStack(spacing: 5) {
                 ForEach((0..<array.count), id: \.self) { index in
-                    if let image = Image(data: array[index]) {
-                        image
+                    if let image = UIImage(data: array[index]) {
+                        Image(uiImage: image)
                             .resizable()
                             .aspectRatio(contentMode: .fill)
                             .frame(width: index == self.index ? 83 : 65,

@@ -10,8 +10,15 @@ import SwiftUI
 struct Page2View: View {
     
     @ObservedObject var viewModel: Page2ViewModel
+    @State private var showingSubview = false
     
     var dismissView: () -> () = { }
+    
+    private func animation() {
+        withAnimation(.easeOut(duration: 1.2)) {
+            showingSubview = true
+        }
+    }
     
     var body: some View {
         ZStack {
@@ -22,6 +29,9 @@ struct Page2View: View {
                 if let data = viewModel.model?.imageData {
                     CarouselView(array: data)
                         .padding(.top, 8)
+                        .onAppear {
+                            animation()
+                        }
                 } else {
                     EmptyView()
                         .frame(width: 342, height: 400)
@@ -51,7 +61,7 @@ struct Page2View: View {
                                 .font(Font.custom("Montserrat-Regulare", size: 11))
                             
                             HStack {
-                                Button(action: { print("-") }) {
+                                Button(action: { viewModel.minusItem() }) {
                                     Image("minus")
                                         .foregroundColor(.white)
                                         .frame(width: 38, height: 22)
@@ -60,7 +70,7 @@ struct Page2View: View {
                                                           blue: 215/255))
                                         .cornerRadius(8)
                                 }
-                                Button(action: { print("+") }) {
+                                Button(action: { viewModel.plusItem() }) {
                                     Image("plus")
                                         .foregroundColor(.white)
                                         .frame(width: 38, height: 22)
@@ -77,7 +87,7 @@ struct Page2View: View {
                             print("add to cart")
                         }) {
                             HStack {
-                                Text("#2,500")
+                                Text("$ \(priceFormater(viewModel.price))")
                                     .foregroundColor(Color(red: 153/255,
                                                            green: 160/255,
                                                            blue: 255/255))
@@ -104,7 +114,7 @@ struct Page2View: View {
                 .frame(width: UIScreen.main.bounds.size.width, height: 158)
                 .background(Color(red: 24/255, green: 23/255, blue: 38/255))
                 .cornerRadius(28)
-                .offset(y: 60)
+                .offset(y: showingSubview ? 60 : 160)
             }
             
             // MARK: - like/share view
@@ -137,6 +147,9 @@ struct Page2View: View {
                 }
                 Spacer()
             }
+        }
+        .onAppear {
+            viewModel.fetchData()
         }
     }
 }

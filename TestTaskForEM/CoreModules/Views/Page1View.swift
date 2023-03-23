@@ -11,9 +11,16 @@ struct Page1View: View {
     
     @ObservedObject var viewModel: Page1ViewModel
     
-    @State var mockStr = ""
+    @State private var mockStr = ""
+    @State private var showingSubview = false
     
     var showPage2: () -> () = { }
+    
+    private func animation() {
+        withAnimation(.easeOut(duration: 1.2)) {
+            showingSubview = true
+        }
+    }
     
     var body: some View {
         ZStack {
@@ -119,7 +126,11 @@ struct Page1View: View {
                                 }
                             }
                             .frame(height: 150)
+                            .onAppear {
+                                animation()
+                            }
                         }
+                        .offset(x: showingSubview ? 0 : UIScreen.main.bounds.size.width)
                     }
                     .padding(.top)
                     
@@ -148,6 +159,7 @@ struct Page1View: View {
                             }
                             .frame(height: 225)
                         }
+                        .offset(x: showingSubview ? 0 : UIScreen.main.bounds.size.width)
                     }
                     .padding(.top)
                     
@@ -173,6 +185,7 @@ struct Page1View: View {
                             }
                             .frame(height: 150)
                         }
+                        .offset(x: showingSubview ? 0 : UIScreen.main.bounds.size.width)
                     }
                     .padding(.top)
                     

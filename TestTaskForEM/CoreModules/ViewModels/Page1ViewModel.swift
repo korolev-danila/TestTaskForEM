@@ -28,6 +28,10 @@ final class Page1ViewModel: ObservableObject {
         bindingPublishers()
     }
     
+    deinit {
+        print("deinit Page1ViewModel")
+    }
+    
     private func bindingPublishers() {
         cancellable = Publishers.Zip(latestSubj, flashSubj)
             .receive(on: DispatchQueue.main)
@@ -38,13 +42,13 @@ final class Page1ViewModel: ObservableObject {
                 case .failure:
                     print("Failure")
                 }
-            }, receiveValue: { value in
+            }, receiveValue: { [weak self] value in
                 if value.0.count > 0 && value.1.count > 0 {
-                    self.latestArr = value.0
-                    self.flashsArr = value.1
+                    self?.latestArr = value.0
+                    self?.flashsArr = value.1
                 } else if value.0.count == 0 && value.1.count == 0 {
-                    self.isFetch = false
-                    self.fetchData()
+                    self?.isFetch = false
+                    self?.fetchData()
                 }
             })
     }
