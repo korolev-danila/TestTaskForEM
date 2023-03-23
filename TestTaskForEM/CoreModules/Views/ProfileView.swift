@@ -12,7 +12,7 @@ struct ProfileView: View {
     @ObservedObject private var viewModel: ProfileViewModel
     
     @State var shouldShowImagePicker = false
-        
+    
     var showSignIn: () -> () = { }
     
     init(_ viewModel: ProfileViewModel) {
@@ -91,7 +91,6 @@ struct ProfileView: View {
                                 .resizable()
                                 .scaledToFit()
                                 .frame(width: 80, height: 16)
-                            
                         })
                     }
                     .frame(width: 305, height: 42)
@@ -200,6 +199,7 @@ struct ProfileView: View {
                 .padding(.top, 11)
                 .padding(.leading, 32)
                 .padding(.trailing, 45)
+                
                 Spacer()
             }
         }
@@ -212,9 +212,3 @@ struct ProfileView: View {
         }
     }
 }
-
-//struct ProfileView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        ProfileView()
-//    }
-//}

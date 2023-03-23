@@ -25,7 +25,7 @@ struct ModelDetails: Hashable, Codable {
         let price = json["price"] as? Double
         let colors = json["colors"] as? [String]
         let imageUrls = json["image_urls"] as? [String]
-
+        
         self.name = name ?? ""
         self.description = description ?? ""
         self.rating = rating ?? 0.0

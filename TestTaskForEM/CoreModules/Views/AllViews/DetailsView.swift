@@ -45,7 +45,7 @@ struct DetailsView: View {
             }
             .frame(height: 110)
             
-            
+            // MARK: - numberOfReviews
             HStack(alignment: .center, spacing: 3.5) {
                 Image("star")
                     .offset(y: -1)
@@ -61,13 +61,13 @@ struct DetailsView: View {
                     .font(Font.custom("Montserrat-Regulare", size: 9))
             }
             
+            // MARK: - ColorView
             Text("Color:")
                 .foregroundColor(Color(red: 115/255,
                                        green: 115/255,
                                        blue: 115/255))
                 .font(Font.custom("Montserrat-Bold", size: 11))
             
-            // MARK: - ColorView
             HStack(spacing: 15) {
                 ForEach((0..<model.colors.count), id: \.self) { index in
                     Color(hex: model.colors[index])
@@ -83,7 +83,6 @@ struct DetailsView: View {
                         }
                 }
             }
-            
             Spacer()
         }
         .padding(.horizontal, 24)

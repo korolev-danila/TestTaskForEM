@@ -10,13 +10,14 @@ import SwiftUI
 struct Page2View: View {
     
     @ObservedObject var viewModel: Page2ViewModel
-            
+    
     var dismissView: () -> () = { }
     
     var body: some View {
         ZStack {
             Color(red: 250/255, green: 249/255, blue: 255/255)
                 .ignoresSafeArea()
+            
             VStack {
                 if let data = viewModel.model?.imageData {
                     CarouselView(array: data)
@@ -33,7 +34,6 @@ struct Page2View: View {
                     EmptyView()
                         .frame(height: 184)
                 }
-                
                 Spacer()
             }
             
@@ -60,7 +60,6 @@ struct Page2View: View {
                                                           blue: 215/255))
                                         .cornerRadius(8)
                                 }
-                                
                                 Button(action: { print("+") }) {
                                     Image("plus")
                                         .foregroundColor(.white)
@@ -72,7 +71,6 @@ struct Page2View: View {
                                 }
                             }
                         }
-                        
                         Spacer()
                         
                         Button(action: {

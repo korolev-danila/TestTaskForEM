@@ -10,11 +10,11 @@ import SwiftUI
 struct SignInView: View {
     @ObservedObject private var viewModel: SignInViewModel
     
-    var showMain: () -> () = { }
-    var showLogin: () -> () = { }
-    
     @State private var isEmailValid = true
     @State private var showingAlert = false
+    
+    var showMain: () -> () = { }
+    var showLogin: () -> () = { }
     
     init(_ viewModel: SignInViewModel) {
         self.viewModel = viewModel
@@ -169,9 +169,3 @@ struct SignInView: View {
             }))
     }
 }
-
-//struct SignInView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        SignInView()
-//    }
-//}

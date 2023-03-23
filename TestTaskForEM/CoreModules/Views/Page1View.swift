@@ -77,6 +77,7 @@ struct Page1View: View {
                 }
                 .padding(.top,2)
                 
+                // MARK: - TextField looking
                 HStack {
                     TextField("", text: $mockStr)
                         .placeholder(when: mockStr.isEmpty) {

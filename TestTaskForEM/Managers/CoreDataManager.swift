@@ -6,7 +6,6 @@
 //
 
 import CoreData
-import UIKit
 
 protocol CoreDataProtocol {
     func setPerson(_ person: Person?)
@@ -25,7 +24,7 @@ enum CoreDataError: Error {
 final class CoreDataManager {
     private let context: NSManagedObjectContext
     private var person: Person?
-
+    
     init(context: NSManagedObjectContext) {
         self.context = context
     }

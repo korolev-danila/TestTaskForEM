@@ -85,9 +85,3 @@ struct ButtonBarView: View {
         }
     }
 }
-
-struct ButtonBarView_Previews: PreviewProvider {
-    static var previews: some View {
-        ButtonBarView()
-    }
-}

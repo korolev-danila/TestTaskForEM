@@ -13,7 +13,7 @@ struct Model: Identifiable, Hashable, Codable {
     var name: String
     var price: Double
     var discount: Double?
-    var imageData: Data? 
+    var imageData: Data?
     var imageUrl: String
     
     init?(json: [String: Any]) {
@@ -22,14 +22,14 @@ struct Model: Identifiable, Hashable, Codable {
         let price = json["price"] as? Double
         let discount = json["discount"] as? Double
         let imageUrl = json["image_url"] as? String
-
+        
         self.category = category ?? ""
         self.name = name ?? ""
         self.price = price ?? 0.0
         self.discount = discount
         self.imageUrl = imageUrl ?? ""
     }
-
+    
     static func getArray(from jsonArray: Any) -> [Model]? {
         guard let jsonArray = jsonArray as? Array<[String: Any]> else { return nil}
         return jsonArray.compactMap { Model(json: $0)}

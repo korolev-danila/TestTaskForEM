@@ -26,7 +26,7 @@ struct LoginView: View {
             showMain()
         } else {
             showingAlert = true
-        }        
+        }
     }
     
     var body: some View {
@@ -103,19 +103,13 @@ struct LoginView: View {
             Alert(title: Text("Not found"), message: Text("Email or password is not correct."), dismissButton: .cancel())
         }
         .gesture(DragGesture(minimumDistance: 8, coordinateSpace: .local)
-                            .onEnded({ value in
-                                if value.translation.height > 0 &&
-                                    value.translation.width < 100 &&
-                                    value.translation.width > -100 {
-                                    print("8888")
-                                    hideKeyboard()
-                                    }
-                            }))
+            .onEnded({ value in
+                if value.translation.height > 0 &&
+                    value.translation.width < 100 &&
+                    value.translation.width > -100 {
+                    print("8888")
+                    hideKeyboard()
+                }
+            }))
     }
 }
-
-//struct LoginView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        LoginView()
-//    }
-//}

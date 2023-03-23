@@ -31,6 +31,7 @@ extension ProfileCoordinator: CoordinatorProtocol {
         view.showSignIn = { [weak self] in
             self?.showSignIn()
         }
+        
         rootViewController.setViewControllers([UIHostingController(rootView: view)], animated: false)
     }
 }

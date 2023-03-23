@@ -16,7 +16,8 @@ struct CarouselView: View {
             TabView(selection: $index) {
                 ForEach((0..<array.count), id: \.self) { index in
                     HStack {
-                        if let image = Image(data: array[index]) {
+                        
+                        if let image = Image(data: array[index])  { //  UIImage(data: array[index])
                             image
                                 .resizable()
                                 .aspectRatio(contentMode: .fill)
@@ -46,12 +47,12 @@ struct CarouselView: View {
                             .cornerRadius(6)
                             .overlay(
                                 RoundedRectangle(cornerRadius: 6)
-                                    .stroke(index == self.index ? .clear : Color(red: 235/255,
-                                                                                 green: 235/255,
-                                                                                 blue: 235/255), lineWidth: 1.5)
+                                    .stroke(index == self.index ? .clear :
+                                                Color(red: 235/255, green: 235/255,
+                                                      blue: 235/255), lineWidth: 1.5)
                             )
-                            .shadow(color: index != self.index ?
-                                .clear : Color(CGColor(gray: 0.5, alpha: 0.7)), radius: 3, x: 0, y: 5)
+                            .shadow(color: index != self.index ? .clear :
+                                        Color(CGColor(gray: 0.5, alpha: 0.7)), radius: 3, x: 0, y: 5)
                             .offset(y: index == self.index ? 0 : 4)
                             .onTapGesture {
                                 self.index = index
@@ -61,7 +62,6 @@ struct CarouselView: View {
                             .frame(width: index == self.index ? 83 : 65,
                                    height: index == self.index ? 45 : 37)
                     }
-                    
                 }
             }
         }

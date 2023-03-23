@@ -69,11 +69,3 @@ struct RegularCell: View {
         }
     }
 }
-
-//struct RegularCell_Previews: PreviewProvider {
-//    static var previews: some View {
-//        let model = Model(category: "Kids", name: "Sony ", // Playstation 5
-//                          price: 180000, image: Image("fon"))
-//        RegularCell(model: model)
-//    }
-//}

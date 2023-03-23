@@ -13,7 +13,7 @@ final class ProfileViewModel: ObservableObject {
     
     @Published var image: UIImage?
     @Published var namePerson = ""
-        
+    
     init(_ coreData: CoreDataProtocol) {
         self.coreData = coreData
         fetchPerson()
@@ -34,7 +34,7 @@ final class ProfileViewModel: ObservableObject {
         }
         namePerson = (person?.firstName ?? "") + " " + (person?.lastName ?? "")
     }
-
+    
     func saveImage() {
         person?.personImg = image?.pngData()
         coreData.saveContext()
