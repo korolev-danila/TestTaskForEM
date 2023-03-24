@@ -7,7 +7,7 @@
 
 import CoreData
 
-protocol CoreDataProtocol {
+protocol CoreDataProtocol: AnyObject {
     func setPerson(_ person: Person?)
     func getPerson() throws -> Person
     func fetchMyPersons() -> [Person]

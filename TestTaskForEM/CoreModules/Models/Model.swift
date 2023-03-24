@@ -9,12 +9,19 @@ import Foundation
 
 struct Model: Identifiable, Hashable, Codable {
     var id = UUID()
-    var category: String
     var name: String
     var price: Double
+    var category: String?
     var discount: Double?
     var imageData: Data?
-    var imageUrl: String
+    var imageUrl: String?
+    
+    /// for details
+    var description: String?
+    var rating: Double?
+    var numberOfReviews: Int?
+    var colors: [String]?
+    var imageUrls: [String]?
     
     init?(json: [String: Any]) {
         let category = json["category"] as? String
@@ -23,15 +30,27 @@ struct Model: Identifiable, Hashable, Codable {
         let discount = json["discount"] as? Double
         let imageUrl = json["image_url"] as? String
         
-        self.category = category ?? ""
+        let description = json["description"] as? String
+        let rating = json["rating"] as? Double
+        let numberOfReviews = json["number_of_reviews"] as? Int
+        let colors = json["colors"] as? [String]
+        let imageUrls = json["image_urls"] as? [String]
+        
         self.name = name ?? ""
         self.price = price ?? 0.0
+        self.category = category
         self.discount = discount
-        self.imageUrl = imageUrl ?? ""
+        self.imageUrl = imageUrl
+        
+        self.description = description
+        self.rating = rating
+        self.numberOfReviews = numberOfReviews
+        self.colors = colors
+        self.imageUrls = imageUrls
     }
     
     static func getArray(from jsonArray: Any) -> [Model]? {
-        guard let jsonArray = jsonArray as? Array<[String: Any]> else { return nil}
+        guard let jsonArray = jsonArray as? Array<[String: Any]> else { return nil }
         return jsonArray.compactMap { Model(json: $0)}
     }
 }

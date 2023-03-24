@@ -8,7 +8,7 @@
 import UIKit
 
 protocol CoordinatorProtocol {
-    func start()
+    func setViewToRoot()
 }
 
 final class ApplicationCoordinator {
@@ -25,28 +25,27 @@ final class ApplicationCoordinator {
     
     private func showMain() {
         let mainCoordinator = MainCoordinator(coreData)
-        mainCoordinator.start()
+        mainCoordinator.setViewToRoot()
         childCoordinator = [mainCoordinator]
-        window.rootViewController = mainCoordinator.rootViewController
         mainCoordinator.showSignIn = { [weak self] in
-            self?.start()
+            self?.setViewToRoot()
         }
+        
+        window.rootViewController = mainCoordinator.rootViewController
     }
 }
 
+// MARK: - CoordinatorProtocol
 extension ApplicationCoordinator: CoordinatorProtocol {
-    func start() {
-        let arr = coreData.fetchMyPersons()
-        coreData.setPerson(arr[0])
-        showMain()
+    func setViewToRoot() {
         
-//        let signInCoordinator = SignInCoordinator(coreData)
-//        signInCoordinator.start()
-//        signInCoordinator.showMain = { [weak self] in
-//            self?.showMain()
-//        }
-//        childCoordinator = [signInCoordinator]
-//
-//        window.rootViewController = signInCoordinator.rootViewController
+        let signInCoordinator = SignInCoordinator(coreData)
+        signInCoordinator.setViewToRoot()
+        signInCoordinator.showMain = { [weak self] in
+            self?.showMain()
+        }
+        childCoordinator = [signInCoordinator]
+
+        window.rootViewController = signInCoordinator.rootViewController
     }
 }
