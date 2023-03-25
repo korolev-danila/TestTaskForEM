@@ -9,7 +9,7 @@ import Combine
 import Foundation
 
 final class SignInViewModel: ObservableObject {
-    private unowned let coreData: CoreDataProtocol
+    private unowned let coredata: CoreDataProtocol
     private var persons: [Person] = []
     
     /// for SignInView
@@ -27,35 +27,41 @@ final class SignInViewModel: ObservableObject {
     private var cancellable = Set<AnyCancellable>()
     
     init(_ coreData: CoreDataProtocol) {
-        self.coreData = coreData
+        self.coredata = coreData
         self.fetchPersons()
         self.setupBindings()
     }
     
     deinit {
-        print("deinit SignInViewModel")
+        print("deinit SignIn_ViewModel")
     }
     
     private func setupBindings() {
         isSignUpFormValidPublisher
             .receive(on: RunLoop.main)
-            .assign(to: \.formIsValid, on: self)
+            .sink { [weak self] (value) in
+                self?.formIsValid = value
+            }
             .store(in: &cancellable)
         
         isUserEmailValidPublisher
             .receive(on: RunLoop.main)
-            .assign(to: \.emailIsValid, on: self)
+            .sink { [weak self] (value) in
+                self?.emailIsValid = value
+            }
             .store(in: &cancellable)
         
         isPasswordValidPublisher
             .receive(on: RunLoop.main)
-            .assign(to: \.passwordIsValid, on: self)
+            .sink { [weak self] (value) in
+                self?.passwordIsValid = value
+            }
             .store(in: &cancellable)
     }
     
     // MARK: -
     func fetchPersons() {
-        persons = coreData.fetchMyPersons()
+        persons = coredata.fetchMyPersons()
     }
     
     func findPersonInArrayAndCheck() -> Bool {
@@ -65,13 +71,13 @@ final class SignInViewModel: ObservableObject {
                 guard let password = person.password else {
                     /// need for first login
                     person.password = userPassword
-                    coreData.saveContext()
-                    coreData.setPerson(person)
+                    coredata.saveContext()
+                    coredata.setPerson(person)
                     return true
                 }
                 
                 if password == userPassword {
-                    coreData.setPerson(person)
+                    coredata.setPerson(person)
                     return true
                 }
             }
@@ -92,12 +98,12 @@ final class SignInViewModel: ObservableObject {
         var person: Person?
         
         do {
-            person = try coreData.createNewPerson()
+            person = try coredata.createNewPerson()
             person?.firstName = userFirstName
             person?.lastName = userLastName
             person?.email = userEmail
-            coreData.saveContext()
-            coreData.setPerson(person)
+            coredata.saveContext()
+            coredata.setPerson(person)
             return true
         } catch {
             print("error create coreData.createNewPerson")

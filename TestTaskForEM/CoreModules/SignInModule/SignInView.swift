@@ -76,7 +76,6 @@ struct SignInView: View {
                 .padding(.top, -17.5)
                 
                 GoogleAppleView()
-                    .padding(.top, 45)
             }
             
             Spacer()

@@ -22,7 +22,7 @@ struct CollectionView: View {
     }
     
     private func animation() {
-        withAnimation(.easeOut(duration: 1.2)) {
+        withAnimation(.easeOut(duration: 1.2).delay(0.4)) {
             showingSubview = true
         }
     }
@@ -91,13 +91,13 @@ struct CollectionView: View {
                             }
                         }
                     }
+                    .frame(height: showingSubview ? getHeight() : 0 )
                     .onAppear {
                         animation()
                     }
                 }
             }
             .frame(height: getHeight())
-            .offset(x: showingSubview ? 0 : UIScreen.main.bounds.size.width)
         }
     }
 }

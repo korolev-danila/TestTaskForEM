@@ -10,16 +10,8 @@ import SwiftUI
 struct Page1View: View {
     
     @ObservedObject var viewModel: Page1ViewModel
-    
-    @State private var showingSubview = false
-    
+        
     var showPage2: ((Model) -> Void)?
-
-    private func animation() {
-        withAnimation(.easeOut(duration: 1.2)) {
-            showingSubview = true
-        }
-    }
     
     var body: some View {
         ZStack {
@@ -67,22 +59,8 @@ struct Page1View: View {
                 }
                 .padding(.top,2)
                 
-                // MARK: - TextField looking
-                HStack {
-                    TextField("", text: $viewModel.searchText)
-                        .placeholder(when: viewModel.searchText.isEmpty) {
-                            Text("What are you looking for ?")
-                                .foregroundColor(ColorManager.darkGray2)
-                                .font(FontManager.light(size: 11))
-                        }
-                        .frame(width: 263, height: 24)
-                        .padding(EdgeInsets(top: 0, leading: 8, bottom: 0, trailing: 8))
-                        .background(Color(red: 245/255, green: 246/255, blue: 247/255))
-                        .clipShape(Capsule())
-                    
-                    Image("search")
-                        .padding(.leading, -30)
-                }
+                SearchView(text: $viewModel.searchText, array: $viewModel.products)
+                    .frame(width: 260)
                 
                 ButtonBarView()
                     .padding(.top, 8)

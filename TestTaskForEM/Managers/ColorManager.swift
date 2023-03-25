@@ -13,6 +13,10 @@ final class ColorManager {
         return Color(red: 250/255, green: 249/255, blue: 255/255)
     }
     
+    public static var backgroundSearch: Color {
+        return Color(red: 245/255, green: 246/255, blue: 247/255)
+    }
+    
     // MARK: - black
     public static var black: Color {
         return Color(red: 4/255, green: 4/255, blue: 2/255)
@@ -42,7 +46,6 @@ final class ColorManager {
     public static var violet: Color {
         return Color(red: 153/255, green: 160/255, blue: 255/255)
     }
-    
     
     // MARK: - gray
     public static var darkGray: Color {
@@ -100,6 +103,5 @@ final class ColorManager {
     public static var gray6: Color {
         return Color(red: 229/255, green: 233/255, blue: 239/255)
     }
-    
 }
 

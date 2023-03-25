@@ -17,10 +17,8 @@ struct AsyncImg: View {
                 image
                     .resizable()
                     .aspectRatio(contentMode: .fill)
-            } else if phase.error != nil {
-                Color.gray
             } else {
-                Color.clear
+                ColorManager.gray6
             }
         }
     }

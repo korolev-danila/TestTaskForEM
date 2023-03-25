@@ -29,7 +29,6 @@ enum NetworkFetcherError: Error {
     case invalidURL
     case missingData
     case outOfRange
-    case failurUpdateImg
 }
 
 final class NetworkManager { }
@@ -58,7 +57,7 @@ extension NetworkManager: NetworkManagerProtocol {
         guard let respont = asJSON as? NSDictionary else { throw NetworkFetcherError.missingData }
         guard let data = respont.object(forKey: key) else { throw NetworkFetcherError.missingData }
         guard let models = Model.getArray(from: data) else { throw NetworkFetcherError.missingData }
-                
+        
         return models
     }
     

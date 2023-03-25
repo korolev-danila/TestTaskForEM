@@ -17,7 +17,8 @@ struct CarouselView: View {
                 ForEach((0..<arrUrl.count), id: \.self) { index in
                     HStack {
                         AsyncImg(url: arrUrl[index])
-                            .frame(width: 342, height: 294)
+                            .frame(width: UIScreen.screenWidth * 0.85,
+                                   height: UIScreen.screenWidth * 0.74) // 342 294
                             .clipped()
                             .cornerRadius(15)
                         
@@ -39,8 +40,6 @@ struct CarouselView: View {
                         .overlay(
                             RoundedRectangle(cornerRadius: 6)
                                 .stroke( ColorManager.lightGray2, lineWidth: 1.5)
-//                                .stroke(index == self.index ? .clear :
-//                                            ColorManager.lightGray2, lineWidth: 1.5)
                         )
                         .offset(y: index == self.index ? 0 : 4)
                         .onTapGesture {

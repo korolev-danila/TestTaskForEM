@@ -10,6 +10,7 @@ import SwiftUI
 struct GoogleAppleView: View {
     var body: some View {
         VStack(spacing: 38) {
+            Spacer()
             Button(action: { }) {
                 Label(title: {
                     Text("Sign in with Google")
@@ -36,6 +37,7 @@ struct GoogleAppleView: View {
                 })
             }
             .padding(.leading, -12)
+            Spacer()
         }
     }
 }

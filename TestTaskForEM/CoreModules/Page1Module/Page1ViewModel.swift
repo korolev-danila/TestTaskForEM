@@ -7,7 +7,6 @@
 
 import Foundation
 import Combine
-import SwiftUI
 
 final class Page1ViewModel: ObservableObject {
     unowned private let network: NetworkManagerProtocol
@@ -22,9 +21,9 @@ final class Page1ViewModel: ObservableObject {
     @Published var latestArr: [Model] = []
     @Published var flashsArr: [Model] = []
         
-    @Published private (set) var products: [String] = []
     private let searchSubj = PassthroughSubject<[String], Never>()
     @Published var searchText = String()
+    @Published var products: [String] = []
     
     private var cancellables = Set<AnyCancellable>()
     
@@ -50,9 +49,9 @@ final class Page1ViewModel: ObservableObject {
         $searchText
             .debounce(for: .milliseconds(1000), scheduler: RunLoop.main)
             .removeDuplicates()
-            .map({ (string) -> String? in
+            .map({ [weak self] (string) -> String? in
                 if string.count < 1 {
-                    self.products = []
+                    self?.products = []
                     return nil
                 }
                 return string
@@ -69,11 +68,13 @@ final class Page1ViewModel: ObservableObject {
         searchSubj
             .receive(on: DispatchQueue.main)
             .map { [weak self] array in
-                return array.filter({ $0.contains(self?.searchText ?? "") })
+                return array.filter({
+                    $0.contains(self?.searchText ?? "") && $0 != self?.searchText
+                })
             }
-            .sink { (completed) in
-            } receiveValue: { [self] (searchedProducts) in
-                products = searchedProducts
+            .sink { (_) in
+            } receiveValue: { [weak self] (searchedProducts) in
+                self?.products = searchedProducts
             }
             .store(in: &cancellables)
     }
@@ -81,13 +82,7 @@ final class Page1ViewModel: ObservableObject {
     private func bindCollectionSubj() {
         Publishers.Zip(latestSubj, flashSubj)
             .receive(on: DispatchQueue.main)
-            .sink(receiveCompletion: { completion in
-                switch completion {
-                case .finished:
-                    print("Finished")
-                case .failure:
-                    print("Failure")
-                }
+            .sink(receiveCompletion: { _ in
             }, receiveValue: { [weak self] value in
                 if value.0.count > 0 && value.1.count > 0 {
                     self?.latestArr = value.0
