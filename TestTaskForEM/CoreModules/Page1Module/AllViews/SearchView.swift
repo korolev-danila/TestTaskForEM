@@ -12,6 +12,16 @@ struct SearchView: View {
     @Binding var text: String
     @Binding var array: [String]
     
+    private var heightOfCells: CGFloat { CGFloat(array.count * 24) }
+    
+    @State private var showingSubview = false
+    
+    private func animation() {
+        withAnimation(.easeOut(duration: 0.6)) {
+            showingSubview = (array.count == 0 ? false : true)
+        }
+    }
+    
     var body: some View {
         VStack(spacing: 0) {
             HStack(spacing: 0) {
@@ -31,14 +41,12 @@ struct SearchView: View {
             }
             .frame(height: 24)
             
-            VStack {
+            VStack(spacing: 0) {
                 ForEach(array, id: \.self) { data in
                     HStack {
                         Text(data)
-                            .frame(height: 24)
                             .font(FontManager.light(size: 11))
                             .padding(.leading, 8)
-                            
                         Spacer()
                     }
                     .containerShape(Rectangle())
@@ -47,10 +55,15 @@ struct SearchView: View {
                         array = []
                     }
                 }
+                .frame(height: showingSubview ? 24 : 0)
+                .onChange(of: array) { _ in
+                    animation()
+                }
             }
             .padding(.top, 8)
+            Spacer()
         }
-        .frame(height: CGFloat($array.count * 24) + 24)
+        .frame(height: (showingSubview ? heightOfCells : 0) + 34)
     }
 }
 

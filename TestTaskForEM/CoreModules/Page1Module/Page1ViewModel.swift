@@ -12,15 +12,18 @@ final class Page1ViewModel: ObservableObject {
     unowned private let network: NetworkManagerProtocol
     unowned private let coreData: CoreDataProtocol
     
+    /// person properties
     private var person: Person?
     @Published var imgData: Data?
     
+    /// for CollectionView
     private var isFetch = false
     private let latestSubj = PassthroughSubject<[Model], Error>()
     private let flashSubj = PassthroughSubject<[Model], Error>()
     @Published var latestArr: [Model] = []
     @Published var flashsArr: [Model] = []
         
+    /// for SearchView
     private let searchSubj = PassthroughSubject<[String], Never>()
     @Published var searchText = String()
     @Published var products: [String] = []

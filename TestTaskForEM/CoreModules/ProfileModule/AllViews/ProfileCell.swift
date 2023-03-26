@@ -7,11 +7,6 @@
 
 import SwiftUI
 
-//enum TypeCell: String {
-//    case trade = "trade"
-//    case
-//}
-
 struct ProfileCell: View {
     
     var iconName: String

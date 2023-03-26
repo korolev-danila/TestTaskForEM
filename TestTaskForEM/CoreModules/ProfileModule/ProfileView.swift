@@ -21,7 +21,7 @@ struct ProfileView: View {
     init(_ viewModel: ProfileViewModel) {
         self.viewModel = viewModel
     }
-        
+    
     var body: some View {
         ZStack {
             ColorManager.backgroundWhite
@@ -47,7 +47,6 @@ struct ProfileView: View {
                     .padding(.leading, 20)
                     .padding(.trailing, 35)
                     
-               //     ImagePersonView(image: viewModel.image, type: .profile)
                     ImagePersonView(data: $viewModel.imgData, type: .profile)
                     
                     Button(action: {
@@ -72,17 +71,17 @@ struct ProfileView: View {
                 // MARK: -
                 VStack(spacing: 23) {
                     ProfileCell(iconName: "trade", text: "Trade store", imageName: "backRight")
-
+                    
                     ProfileCell(iconName: "trade", text: "Payment method", imageName: "backRight")
-
+                    
                     ProfileCell(iconName: "trade", text: "Balance", imageName: "1530")
                     
                     ProfileCell(iconName: "trade", text: "Trade history", imageName: "backRight")
-
+                    
                     ProfileCell(iconName: "restore", text: "Restore Purchase", imageName: "backRight")
                     
                     ProfileCell(iconName: "ask", text: "Help")
-
+                    
                     ProfileCell(iconName: "logOut", text: "Log out")
                         .contentShape(Rectangle())
                         .onTapGesture {
@@ -100,7 +99,11 @@ struct ProfileView: View {
             ImagePicker(image: $image)
                 .ignoresSafeArea()
                 .onDisappear() {
-                    viewModel.saveImage(data: image?.pngData())
+                    let data = image?.pngData()
+                    viewModel.imgData = data
+                    Task {
+                        await viewModel.saveImage(data: data)
+                    }
                 }
         }
     }

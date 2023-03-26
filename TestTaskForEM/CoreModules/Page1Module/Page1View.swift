@@ -10,7 +10,7 @@ import SwiftUI
 struct Page1View: View {
     
     @ObservedObject var viewModel: Page1ViewModel
-        
+    
     var showPage2: ((Model) -> Void)?
     
     var body: some View {
@@ -22,19 +22,16 @@ struct Page1View: View {
                 Text("NavBar")
                     .foregroundColor(.clear)
                     .background(Color.clear)
-                    .frame(height: 24)
+                    .frame(height: 34)
                 
                 HStack {
                     Button(action: { }) {
                         Image("setting")
                     }
                     .padding(.leading, 15)
-                    
                     Spacer()
-                    
                     Image("logoPage")
                         .padding(.leading, 10)
-                    
                     Spacer()
                     
                     ImagePersonView(data: $viewModel.imgData, type: .page1)
@@ -63,7 +60,6 @@ struct Page1View: View {
                     .frame(width: 260)
                 
                 ButtonBarView()
-                    .padding(.top, 8)
                 
                 // MARK: - colliction
                 ScrollView(showsIndicators: false) {
@@ -77,7 +73,6 @@ struct Page1View: View {
                         .padding(.top)
                     
                     Spacer()
-                    
                     Text("")
                         .frame(height: 20)
                 }

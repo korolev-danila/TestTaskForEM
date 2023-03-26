@@ -20,18 +20,18 @@ struct RegularCell: View {
             ZStack {
                 Color(red: 0.9, green: 0.9, blue: 0.9)
                     .ignoresSafeArea()
+                
                 AsyncImg(url: model.imageUrl)
                     .frame(width: 114, height: 149)
                 
-                if let category = model.category {
-                    Text(category)
-                        .font(FontManager.bold(size: 7))
-                        .foregroundColor(ColorManager.black)
-                        .frame(width: 35, height: 12)
-                        .background(ColorManager.lightGrayWithAlpha)
-                        .clipShape(Capsule())
-                        .offset(x: -32, y: 25)
-                }
+                Text(model.category ?? "")
+                    .font(FontManager.bold(size: 6))
+                    .foregroundColor(ColorManager.black)
+                    .frame(width: 35, height: 12)
+                    .background(ColorManager.lightGrayWithAlpha)
+                    .clipShape(Capsule())
+                    .offset(x: -32, y: 25)
+                
                 Text(model.name)
                     .font(FontManager.bold(size: 8))
                     .foregroundColor(.white)
@@ -43,7 +43,7 @@ struct RegularCell: View {
                     Spacer()
                     HStack(alignment: .bottom) {
                         Text( "$ \(priceFormater(model.price))")
-                            .font(FontManager.regular(size: 7))
+                            .font(FontManager.bold(size: 7))
                             .foregroundColor(.white)
                         Spacer()
                         ZStack {

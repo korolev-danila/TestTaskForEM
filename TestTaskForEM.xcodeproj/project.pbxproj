@@ -29,6 +29,7 @@
 		83AD282829C9B4EB0084B8D5 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83AD282729C9B4EB0084B8D5 /* ImagePicker.swift */; };
 		83AD282A29CA1C7E0084B8D5 /* Page2View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83AD282929CA1C7E0084B8D5 /* Page2View.swift */; };
 		83AD282C29CA2E190084B8D5 /* CarouselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83AD282B29CA2E190084B8D5 /* CarouselView.swift */; };
+		83C5E8FC29D0698800822865 /* LikeShareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C5E8FB29D0698800822865 /* LikeShareView.swift */; };
 		83DC9ACE29C3349E0019F913 /* MockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DC9ACD29C3349E0019F913 /* MockView.swift */; };
 		83DC9AD029C338E90019F913 /* MockCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DC9ACF29C338E90019F913 /* MockCoordinator.swift */; };
 		83DC9AD229C33C880019F913 /* UIKitExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DC9AD129C33C880019F913 /* UIKitExtension.swift */; };
@@ -86,6 +87,7 @@
 		83AD282729C9B4EB0084B8D5 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		83AD282929CA1C7E0084B8D5 /* Page2View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Page2View.swift; sourceTree = "<group>"; };
 		83AD282B29CA2E190084B8D5 /* CarouselView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselView.swift; sourceTree = "<group>"; };
+		83C5E8FB29D0698800822865 /* LikeShareView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeShareView.swift; sourceTree = "<group>"; };
 		83DC9ACD29C3349E0019F913 /* MockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockView.swift; sourceTree = "<group>"; };
 		83DC9ACF29C338E90019F913 /* MockCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockCoordinator.swift; sourceTree = "<group>"; };
 		83DC9AD129C33C880019F913 /* UIKitExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIKitExtension.swift; sourceTree = "<group>"; };
@@ -336,6 +338,7 @@
 				83AD282B29CA2E190084B8D5 /* CarouselView.swift */,
 				83ED737E29CB81ED001E8F2D /* DetailsView.swift */,
 				83ED73A629CE3376001E8F2D /* AddToCartView.swift */,
+				83C5E8FB29D0698800822865 /* LikeShareView.swift */,
 			);
 			path = AllViews;
 			sourceTree = "<group>";
@@ -449,6 +452,7 @@
 				8332369829C1F98000A78C64 /* Person+CoreDataClass.swift in Sources */,
 				83ED73A029CDC69A001E8F2D /* ProfileCell.swift in Sources */,
 				83DC9AE229C4F4CB0019F913 /* Page1ViewModel.swift in Sources */,
+				83C5E8FC29D0698800822865 /* LikeShareView.swift in Sources */,
 				8332367D29C0A49600A78C64 /* SwiftUIExtension.swift in Sources */,
 				83ED739729CDB888001E8F2D /* LoginButton.swift in Sources */,
 				83ED739C29CDC43F001E8F2D /* ImagePersonView.swift in Sources */,

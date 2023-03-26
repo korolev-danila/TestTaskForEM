@@ -41,7 +41,6 @@ struct Page2View: View {
                             animation()
                         }
                 }
-                
                 Spacer()
             }
             
@@ -57,24 +56,8 @@ struct Page2View: View {
                     .offset(y: showingSubview ? 60 : 160)
             }
             
-            // MARK: - like/share View
-            VStack(spacing: 12) {
-                Button(action: { print("add to cart") }) {
-                    Image("like2")
-                }
-                .frame(width: 38, height: 24)
-                
-                Image("minus2")
-                
-                Button(action: { print("add to cart") }) {
-                    Image("share")
-                }
-                .frame(width: 38, height: 24)
-            }
-            .frame(width: 42, height: 95)
-            .background(ColorManager.gray6)
-            .cornerRadius(15)
-            .offset(x: 136, y: -108)
+            LikeShareView()
+                .offset(x: 136, y: -108)
             
             // MARK: - back button
             VStack(alignment: .leading) {

@@ -12,7 +12,6 @@ struct AddToCartView: View {
     var minucAction: (() -> Void)
     var plusAction: (() -> Void)
     var price: Double
-
     
     var body: some View {
         VStack {

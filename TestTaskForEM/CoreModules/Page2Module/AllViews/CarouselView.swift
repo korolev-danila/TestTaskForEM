@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct CarouselView: View {
+    
     @State private var index = 0
     @State var arrUrl: [String]
     
@@ -17,8 +18,8 @@ struct CarouselView: View {
                 ForEach((0..<arrUrl.count), id: \.self) { index in
                     HStack {
                         AsyncImg(url: arrUrl[index])
-                            .frame(width: UIScreen.screenWidth * 0.85,
-                                   height: UIScreen.screenWidth * 0.74) // 342 294
+                            .frame(width: UIScreen.screenWidth * 0.88,
+                                   height: UIScreen.screenWidth * 0.76)
                             .clipped()
                             .cornerRadius(15)
                         

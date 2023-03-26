@@ -38,9 +38,8 @@ final class ProfileViewModel: ObservableObject {
     }
     
     // MARK: -
-    func saveImage(data: Data?) {
+    func saveImage(data: Data?) async {
         person?.personImg = data
-        imgData = data
         coredata.saveContext()
     }
 }
